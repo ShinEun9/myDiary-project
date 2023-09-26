@@ -1,0 +1,17 @@
+.black-btn {
+  display: block;
+  width: 100%;
+  background: #29363d;
+  color: white;
+  height: 48px;
+  border: 0;
+  font-weight: bold;
+  font-size: 16px;
+  border-radius: 4px;
+}
+.black-btn:not(:disabled) {
+  cursor: pointer;
+}
+.black-btn:disabled {
+  opacity: 0.2;
+}
