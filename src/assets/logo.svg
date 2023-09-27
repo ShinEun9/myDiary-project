@@ -135,7 +135,7 @@
             additive="sum"
               attributeName="transform"
               attributeType="XML"
-              type="rotate scale"
+              type="rotate"
               from="0 200 90"
               to="360 200 90"
               dur="6s"
