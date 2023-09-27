@@ -1,7 +1,7 @@
-import Button from '../../components/common/Button';
-import Input from '../../components/common/Input';
+import Input from '../common/Input';
+import Button from '../common/Button';
 
-const LoginForm = () => {
+const SignupForm = () => {
   const isPending = false;
   const error = null;
 
@@ -17,11 +17,16 @@ const LoginForm = () => {
       </label>
       <Input type="password" id="user-password" />
 
-      {!isPending && <Button>로그인</Button>}
+      <label className={'label'} htmlFor="user-nickname">
+        닉네임
+      </label>
+      <Input type="text" id="user-nickname" />
+
+      {!isPending && <Button>회원가입</Button>}
       {isPending && <strong>로그인이 진행중입니다...</strong>}
       {error && <strong>{error}</strong>}
     </form>
   );
 };
 
-export default LoginForm;
+export default SignupForm;
