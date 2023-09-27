@@ -1,16 +1,19 @@
 import { FC } from 'react';
-import styles from './LoginHeader.module.css';
+import { Link } from 'react-router-dom';
+import styles from './Header.module.css';
 import { ReactComponent as LogoImg } from '../../assets/logo.svg';
 
-const LoginHeader: FC = () => {
+const Header: FC = () => {
   return (
     <header className={styles['header']}>
       <h1>
         <span className="a11y-hidden">오늘 당신의 일기는</span>
-        <LogoImg />
+        <Link to={'/'}>
+          <LogoImg className={styles['logo']} />
+        </Link>
       </h1>
     </header>
   );
 };
 
-export default LoginHeader;
+export default Header;

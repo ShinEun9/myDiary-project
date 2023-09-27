@@ -4,3 +4,9 @@
   position: relative;
   margin-bottom: 20px;
 }
+
+.logo {
+  max-width: 249px;
+  width: 80%;
+  aspect-ratio: 249/120;
+}
