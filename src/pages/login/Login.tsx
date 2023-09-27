@@ -1,23 +1,18 @@
-import styles from './Login.module.css';
 import { Link } from 'react-router-dom';
-import LoginHeader from '../../components/login/LoginHeader';
 import LoginForm from '../../components/login/LoginForm';
+import BasicLayout from '../../components/layouts/BasicLayout';
 
 const Login = () => {
   return (
-    <>
-      <>
-        <div className={styles['login-wrapper']}>
-          <LoginHeader />
-          <main>
-            <LoginForm />
-          </main>
-          <Link to="/signup" className={styles['btn-link']}>
-            회원가입하러가기
-          </Link>
-        </div>
-      </>
-    </>
+    <BasicLayout>
+      <h2 className="title">
+        <span>로그인</span>
+      </h2>
+      <LoginForm />
+      <Link to="/signup" className="btn-link">
+        회원가입하러가기
+      </Link>
+    </BasicLayout>
   );
 };
 
