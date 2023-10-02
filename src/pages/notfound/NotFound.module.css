@@ -1,0 +1,40 @@
+.container {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+}
+
+main {
+  margin: auto;
+  width: 725px;
+  max-width: calc(100% - 60px);
+  display: flex;
+  gap: 50px;
+}
+.image {
+  flex-shrink: 0;
+}
+
+.title {
+  padding-top: 16px;
+  font-weight: bold;
+  font-size: 36px;
+}
+
+.title-desc {
+  font-size: 16px;
+  color: #767676;
+  margin: 20px 0 40px;
+}
+
+/* layout */
+@media (max-width: 725px) {
+  main {
+    flex-direction: column;
+    align-items: center;
+  }
+  .title,
+  .title-desc {
+    text-align: center;
+  }
+}
