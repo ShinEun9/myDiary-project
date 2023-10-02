@@ -6,7 +6,7 @@ interface Props {
 }
 const Button: FC<Props> = ({ children }) => {
   return (
-    <button className={styles['black-btn']} type="submit">
+    <button className={styles['btn-black']} type="submit">
       {children}
     </button>
   );

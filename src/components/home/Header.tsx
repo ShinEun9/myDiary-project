@@ -6,11 +6,12 @@ import { ReactComponent as LogoImg } from '../../assets/logo.svg';
 import { ReactComponent as LogoutImg } from '../../assets/icon-logout.svg';
 
 const Header = () => {
-  const user: IUser | null = null;
+  const user: IUser | null = { displayName: '은수' };
   return (
     <header className={styles['header']}>
       <div className={styles['header-wrap']}>
         <h1>
+          <span className="a11y-hidden">오늘 당신의 일기는</span>
           <Link to="/">
             <LogoImg className={styles['logo']} />
           </Link>
