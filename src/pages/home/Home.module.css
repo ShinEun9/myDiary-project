@@ -1,0 +1,46 @@
+/* layout */
+.container {
+  display: flex;
+  width: 1224px;
+  max-width: calc(100% - 60px);
+  margin: auto;
+  gap: 40px;
+}
+
+.form-container {
+  flex-basis: 456px;
+  flex-shrink: 0;
+  border-right: 1px solid #ff4f6e;
+  padding: 56px 40px 56px 0px;
+  min-height: calc(100vh - 120px);
+  box-sizing: border-box;
+}
+
+.form-container h2 {
+  font-size: 16px;
+  background: url(../../assets/icon-sun.png) no-repeat 0 0 / 1.2em;
+  padding-bottom: 20px;
+  padding-left: 1.4em;
+}
+
+.list-container {
+  flex-grow: 1;
+  padding-top: 94px;
+}
+
+.list-container ul li {
+  margin-bottom: 76px;
+}
+
+@media (max-width: 1024px) {
+  .container {
+    flex-direction: column;
+    gap: 0;
+  }
+  .form-container {
+    border-right: 0px;
+    border-bottom: 1px solid #ff4f6e;
+    padding-right: 0px;
+    min-height: auto;
+  }
+}
