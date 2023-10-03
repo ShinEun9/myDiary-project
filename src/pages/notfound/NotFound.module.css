@@ -4,24 +4,24 @@
   align-items: center;
 }
 
-main {
+.main {
   margin: auto;
   width: 725px;
   max-width: calc(100% - 60px);
   display: flex;
   gap: 50px;
 }
-.image {
+.main .image {
   flex-shrink: 0;
 }
 
-.title {
+.main .title {
   padding-top: 16px;
   font-weight: bold;
   font-size: 36px;
 }
 
-.title-desc {
+.main .title-desc {
   font-size: 16px;
   color: #767676;
   margin: 20px 0 40px;
@@ -29,12 +29,12 @@ main {
 
 /* layout */
 @media (max-width: 725px) {
-  main {
+  .main {
     flex-direction: column;
     align-items: center;
   }
-  .title,
-  .title-desc {
+  .main .title,
+  .main .title-desc {
     text-align: center;
   }
 }

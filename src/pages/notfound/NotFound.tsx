@@ -8,7 +8,7 @@ const NotFound = () => {
   const navigate = useNavigate();
   return (
     <div className={styles.container}>
-      <main>
+      <main className={styles.main}>
         <h1 className="a11y-hidden">404 페이지</h1>
         <NotFoundImage className={styles.image} />
         <section>
