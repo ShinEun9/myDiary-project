@@ -1,30 +1,65 @@
+import { ChangeEvent, FormEvent, useRef, useState } from 'react';
 import Input from '../common/Input';
 import Button from '../common/Button';
+import { useNavigate } from 'react-router-dom';
+import { useSignup } from '../../hooks/useSignup';
+import { errorDesc } from '../../utils/signupError';
 
 const SignupForm = () => {
-  const isPending = false;
-  const error = null;
+  const navigate = useNavigate();
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [displayName, setDisplayName] = useState('');
+
+  const { error, isPending, signup, emailRef, passwordRef } = useSignup();
+
+  const handleData = (e: ChangeEvent<HTMLInputElement>) => {
+    if (e.target.type === 'email') {
+      setEmail(e.target.value);
+    } else if (e.target.type === 'password') {
+      setPassword(e.target.value);
+    } else if (e.target.type === 'text') {
+      setDisplayName(e.target.value);
+    }
+  };
+
+  const handleSubmit = (e: FormEvent) => {
+    e.preventDefault();
+    signup(email, password, displayName);
+  };
 
   return (
-    <form className={'form-wrap'}>
+    <form className={'form-wrap'} onSubmit={handleSubmit}>
       <label className={'label'} htmlFor="user-email">
         이메일
       </label>
-      <Input type="email" id="user-email" />
+      <Input
+        error={error === errorDesc[0] || error === errorDesc[1]}
+        ref={emailRef}
+        type="email"
+        id="user-email"
+        onChange={handleData}
+      />
 
       <label className={'label'} htmlFor="user-password">
         비밀번호
       </label>
-      <Input type="password" id="user-password" />
+      <Input
+        error={error === errorDesc[2]}
+        ref={passwordRef}
+        type="password"
+        id="user-password"
+        onChange={handleData}
+      />
 
       <label className={'label'} htmlFor="user-nickname">
         닉네임
       </label>
-      <Input type="text" id="user-nickname" />
+      <Input type="text" id="user-nickname" onChange={handleData} />
 
       {!isPending && <Button>회원가입</Button>}
-      {isPending && <strong>로그인이 진행중입니다...</strong>}
-      {error && <strong>{error}</strong>}
+      {isPending && <strong className={'pending'}>회원가입이 진행중입니다...</strong>}
+      {error && <strong className={'error'}>* {error}</strong>}
     </form>
   );
 };

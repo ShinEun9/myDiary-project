@@ -39,6 +39,10 @@ fieldset,
 button {
   border: none;
 }
+button {
+  cursor: pointer;
+  background-color: transparent;
+}
 
 .a11y-hidden {
   clip: rect(1px, 1px, 1px, 1px);
@@ -52,16 +56,18 @@ button {
 }
 
 /* 공통 */
-input:hover,
-textarea:hover {
-  box-shadow: 0 2px 0 0 #2e6ff2;
+.pending,
+.error {
+  display: block;
+  font-size: 12px;
+  margin-top: 10px;
+}
+.pending {
+  color: #29363d;
 }
 
-input:focus,
-textarea:focus {
-  outline: none;
-  box-shadow: 0 0 0 2px #2e6ff2;
-  border-radius: 4px;
+.error {
+  color: #ff4f6e;
 }
 
 /* 로그인, 회원가입 페이지 */
@@ -94,7 +100,7 @@ textarea:focus {
   display: block;
   margin-top: 20px;
   text-align: center;
-  font-size: 18px;
+  font-size: 14px;
   color: black;
   opacity: 0.6;
   transition: 0.3s;

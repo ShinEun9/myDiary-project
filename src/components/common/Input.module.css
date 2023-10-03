@@ -10,3 +10,17 @@
   padding: 0 16px;
   font-size: 16px;
 }
+
+.input-style:hover {
+  box-shadow: 0 2px 0 0 #2e6ff2;
+}
+
+.input-style:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px #2e6ff2;
+  border-radius: 4px;
+}
+
+.input-style.error:focus {
+  box-shadow: 0 0 0 2px #ff4f6e;
+}
