@@ -1,12 +1,15 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
-import { IUser } from '../../typings/db';
 import styles from './Header.module.css';
 import { ReactComponent as LogoImg } from '../../assets/logo.svg';
 import { ReactComponent as LogoutImg } from '../../assets/icon-logout.svg';
+import { useAuthContext } from '../../hooks/useAuthContext';
+import { useLogout } from '../../hooks/useLogout';
+import { User } from 'firebase/auth';
 
 const Header = () => {
-  const user: IUser | null = { displayName: '은수' };
+  const { user } = useAuthContext();
+  const { logout } = useLogout();
+
   return (
     <header className={styles['header']}>
       <div className={styles['header-wrap']}>
@@ -20,12 +23,12 @@ const Header = () => {
           {user && (
             <>
               <p className={styles['hello-txt']}>
-                환영합니다 <strong>{(user as IUser).displayName}</strong>님!
+                환영합니다 <strong>{(user as User).displayName}</strong>님!
               </p>
-              <Link to="/" className={styles['btn-logout']}>
+              <button type={'button'} className={styles['btn-logout']} onClick={logout}>
                 <LogoutImg className={styles['svg']} />
                 <span>로그아웃</span>
-              </Link>
+              </button>
             </>
           )}
         </div>

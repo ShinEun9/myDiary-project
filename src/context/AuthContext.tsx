@@ -1,15 +1,14 @@
 import { FC, ReactNode, createContext, useReducer, useEffect, Reducer, Dispatch } from 'react';
 import { appAuth } from '../firebase/config';
+import { User } from 'firebase/auth';
 
-type User = object | null;
 interface State {
-  user: User;
+  user: User | null;
   isAuthReady: boolean;
 }
-interface Action {
-  type: string;
-  payload: User;
-}
+
+type Action = { type: 'login'; payload: User } | { type: 'logout' } | { type: 'authIsReady'; payload: User };
+
 interface ContextState extends State {
   dispatch: Dispatch<Action>;
 }
@@ -21,7 +20,8 @@ const initialState = {
 const AuthContext = createContext<ContextState>({
   ...initialState,
   dispatch: () => {},
-}); // context 객체를 생성
+});
+
 const AuthContextProvider: FC<{ children: ReactNode }> = ({ children }) => {
   const authReducer = (state: State, action: Action): State => {
     switch (action.type) {
@@ -40,7 +40,7 @@ const AuthContextProvider: FC<{ children: ReactNode }> = ({ children }) => {
 
   useEffect(() => {
     const unsubscribe = appAuth.onAuthStateChanged(function (user) {
-      dispatch({ type: 'authIsReady', payload: user });
+      dispatch({ type: 'authIsReady', payload: user as User });
     });
 
     return () => {
