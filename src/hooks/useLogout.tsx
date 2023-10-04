@@ -14,7 +14,7 @@ export const useLogout = () => {
 
     signOut(appAuth)
       .then(() => {
-        dispatch({ type: 'logout' });
+        dispatch({ type: 'LOGOUT' });
         setError(null);
         setIsPending(false);
       })

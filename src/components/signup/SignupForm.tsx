@@ -6,14 +6,13 @@ import { useSignup } from '../../hooks/useSignup';
 import { errorDesc } from '../../utils/signupError';
 
 const SignupForm = () => {
-  const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [displayName, setDisplayName] = useState('');
 
   const { error, isPending, signup, emailRef, passwordRef } = useSignup();
 
-  const handleData = (e: ChangeEvent<HTMLInputElement>) => {
+  const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     if (e.target.type === 'email') {
       setEmail(e.target.value);
     } else if (e.target.type === 'password') {
@@ -23,13 +22,13 @@ const SignupForm = () => {
     }
   };
 
-  const handleSubmit = (e: FormEvent) => {
+  const handleFormSubmit = (e: FormEvent) => {
     e.preventDefault();
     signup(email, password, displayName);
   };
 
   return (
-    <form className={'form-wrap'} onSubmit={handleSubmit}>
+    <form className={'form-wrap'} onSubmit={handleFormSubmit}>
       <label className={'label'} htmlFor="user-email">
         이메일
       </label>
@@ -38,7 +37,7 @@ const SignupForm = () => {
         ref={emailRef}
         type="email"
         id="user-email"
-        onChange={handleData}
+        onChange={handleInputChange}
       />
 
       <label className={'label'} htmlFor="user-password">
@@ -49,13 +48,13 @@ const SignupForm = () => {
         ref={passwordRef}
         type="password"
         id="user-password"
-        onChange={handleData}
+        onChange={handleInputChange}
       />
 
       <label className={'label'} htmlFor="user-nickname">
         닉네임
       </label>
-      <Input type="text" id="user-nickname" onChange={handleData} />
+      <Input type="text" id="user-nickname" onChange={handleInputChange} />
 
       {!isPending && <Button>회원가입</Button>}
       {isPending && <strong className={'pending'}>회원가입이 진행중입니다...</strong>}

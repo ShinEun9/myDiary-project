@@ -11,10 +11,10 @@ const firebaseConfig = {
   appId: process.env.REACT_APP_APP_ID,
 };
 
-const app = initializeApp(firebaseConfig); // FireBase를 초기화
-const appFireStore = getFirestore(app); // FireStore를 초기화
+const app = initializeApp(firebaseConfig);
+const appFireStore = getFirestore(app);
 
-const appAuth = getAuth(); // 인증 초기화
+const appAuth = getAuth();
 const timeStamp = Timestamp;
 
 export { appFireStore, appAuth, timeStamp };
