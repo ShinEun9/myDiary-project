@@ -1,30 +1,23 @@
 import { ChangeEvent, FormEvent, useRef, useState } from 'react';
+import useInputs from '../../hooks/useInputs';
 import Input from '../common/Input';
 import Button from '../common/Button';
-import { useNavigate } from 'react-router-dom';
 import { useSignup } from '../../hooks/useSignup';
 import { errorDesc } from '../../utils/signupError';
 
+type SignupData = {
+  email: string;
+  password: string;
+  nickname: string;
+};
+
 const SignupForm = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [displayName, setDisplayName] = useState('');
-
+  const [inputs, onChange] = useInputs<SignupData>({ email: '', password: '', nickname: '' });
   const { error, isPending, signup, emailRef, passwordRef } = useSignup();
-
-  const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
-    if (e.target.type === 'email') {
-      setEmail(e.target.value);
-    } else if (e.target.type === 'password') {
-      setPassword(e.target.value);
-    } else if (e.target.type === 'text') {
-      setDisplayName(e.target.value);
-    }
-  };
 
   const handleFormSubmit = (e: FormEvent) => {
     e.preventDefault();
-    signup(email, password, displayName);
+    signup(inputs.email, inputs.password, inputs.nickname);
   };
 
   return (
@@ -33,28 +26,30 @@ const SignupForm = () => {
         이메일
       </label>
       <Input
-        error={error === errorDesc[0] || error === errorDesc[1]}
         ref={emailRef}
+        id="email"
         type="email"
-        id="user-email"
-        onChange={handleInputChange}
+        error={error === errorDesc[0] || error === errorDesc[1]}
+        onChange={onChange}
+        value={inputs.email}
       />
 
-      <label className={'label'} htmlFor="user-password">
+      <label className={'label'} htmlFor="password">
         비밀번호
       </label>
       <Input
-        error={error === errorDesc[2]}
         ref={passwordRef}
+        id="password"
         type="password"
-        id="user-password"
-        onChange={handleInputChange}
+        error={error === errorDesc[2]}
+        onChange={onChange}
+        value={inputs.password}
       />
 
-      <label className={'label'} htmlFor="user-nickname">
+      <label className={'label'} htmlFor="nickname">
         닉네임
       </label>
-      <Input type="text" id="user-nickname" onChange={handleInputChange} />
+      <Input type="text" id="nickname" onChange={onChange} value={inputs.nickname} />
 
       {!isPending && <Button>회원가입</Button>}
       {isPending && <strong className={'pending'}>회원가입이 진행중입니다...</strong>}

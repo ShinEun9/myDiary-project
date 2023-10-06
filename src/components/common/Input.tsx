@@ -5,11 +5,12 @@ import styles from './Input.module.css';
 const stylesBind = classNames.bind(styles);
 
 interface Props {
-  type: 'text' | 'email' | 'password';
   id: string;
-  error?: boolean;
-  onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
+  type: 'text' | 'email' | 'password';
+  onChange: (e: ChangeEvent<HTMLInputElement>) => void;
+  value: string;
   placeholder?: string;
+  error?: boolean;
 }
 const Input = forwardRef<HTMLInputElement, Props>(({ error, ...rest }, ref) => {
   return (

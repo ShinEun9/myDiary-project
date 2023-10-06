@@ -2,36 +2,32 @@ import { useState, ChangeEvent, FormEvent } from 'react';
 import { useLogin } from '../../hooks/useLogin';
 import Button from '../../components/common/Button';
 import Input from '../../components/common/Input';
+import useInputs from '../../hooks/useInputs';
 
+type LoginData = {
+  email: string;
+  password: string;
+};
 const LoginForm = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [inputs, onChange] = useInputs<LoginData>({ email: '', password: '' });
   const { error, isPending, login, emailRef } = useLogin();
-
-  const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
-    if (e.target.type === 'email') {
-      setEmail(e.target.value);
-    } else if (e.target.type === 'password') {
-      setPassword(e.target.value);
-    }
-  };
 
   const handleFormSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    login(email, password);
+    login(inputs.email, inputs.password);
   };
 
   return (
     <form className={'form-wrap'} onSubmit={handleFormSubmit}>
-      <label className={'label'} htmlFor="user-email">
+      <label className={'label'} htmlFor="email">
         이메일
       </label>
-      <Input ref={emailRef} type="email" id="user-email" onChange={handleInputChange} />
+      <Input ref={emailRef} type="email" id="email" onChange={onChange} value={inputs.email} />
 
-      <label className={'label'} htmlFor="user-password">
+      <label className={'label'} htmlFor="password">
         비밀번호
       </label>
-      <Input type="password" id="user-password" onChange={handleInputChange} />
+      <Input type="password" id="password" onChange={onChange} value={inputs.email} />
 
       {!isPending && <Button>로그인</Button>}
       {isPending && <strong className="pending">로그인이 진행중입니다...</strong>}
