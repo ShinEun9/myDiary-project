@@ -16,7 +16,6 @@ export const useLogin = () => {
 
     signInWithEmailAndPassword(appAuth, email, password)
       .then((userCredential) => {
-        // Signed in
         const user = userCredential.user;
         dispatch({ type: 'LOGIN', payload: user });
         setError(null);

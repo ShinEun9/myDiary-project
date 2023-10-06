@@ -9,7 +9,7 @@ export const useSignup = () => {
   const emailRef = useRef<HTMLInputElement>(null);
   const passwordRef = useRef<HTMLInputElement>(null);
 
-  const signup = (email: string, password: string, displayName: string) => {
+  const signup = (email: string, password: string, nickname: string) => {
     setError(null);
     setIsPending(true);
 
@@ -17,7 +17,7 @@ export const useSignup = () => {
       .then((userCredential) => {
         const user = userCredential.user;
 
-        updateProfile(user, { displayName })
+        updateProfile(user, { displayName: nickname })
           .then(() => {
             setError(null);
             setIsPending(false);
