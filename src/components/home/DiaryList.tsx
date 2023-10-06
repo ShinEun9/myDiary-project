@@ -1,18 +1,8 @@
 import React, { FC } from 'react';
 import DiaryItem from './DiaryItem';
+import { Document } from '../../typings/db';
 
-interface diaryItem {
-  id: number;
-  title: string;
-  content: string;
-}
-
-const DiaryList = () => {
-  const diaries = [
-    { id: 1, title: 'hi', content: 'hi' },
-    { id: 2, title: 'hi', content: 'hi' },
-  ];
-
+const DiaryList: FC<{ diaries: Document[] }> = ({ diaries }) => {
   return (
     <>
       {diaries.map((item) => {
