@@ -1,0 +1,45 @@
+/* 기분 버튼  */
+.button-group {
+  margin-bottom: 16px;
+}
+.btn-feeling {
+  display: inline-block;
+  margin-right: 16px;
+  width: 60px;
+  height: 60px;
+  cursor: pointer;
+}
+
+.btn-feeling .check {
+  content: '';
+  display: block;
+  background: url('../../assets/icon-rainbow.png') no-repeat center top/ 50px;
+  opacity: 0.6;
+  transition: 0.3s;
+  text-align: center;
+  color: rgba(0, 0, 0, 0.7);
+  font-size: 12px;
+  padding-top: 53px;
+}
+
+.btn-feeling .check:hover {
+  opacity: 1.05;
+}
+
+.btn-feeling input[value='cloud'] + .check {
+  background-image: url('../../assets/icon-cloud.png');
+}
+
+.btn-feeling input[value='rain'] + .check {
+  background-image: url('../../assets/icon-rain.png');
+}
+
+.btn-feeling input[value='moon'] + .check {
+  background-image: url('../../assets/icon-moon.png');
+}
+
+.btn-feeling .check:hover,
+.btn-feeling .checked {
+  opacity: 1;
+  font-weight: bold;
+}
