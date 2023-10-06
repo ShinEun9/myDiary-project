@@ -1,3 +1,4 @@
-export interface IUser {
-  displayName: string;
+export interface Document {
+  [key: string]: any;
+  id: string;
 }
