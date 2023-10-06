@@ -5,6 +5,21 @@
   padding: 64px 48px;
   position: relative;
 }
+
+.diary-article.show-icon {
+  background: url('../../assets/icon-rainbow.png') no-repeat 30px 50px/ 48px;
+}
+
+.diary-article.show-icon.cloud {
+  background-image: url('../../assets/icon-cloud.png');
+}
+.diary-article.show-icon.rain {
+  background-image: url('../../assets/icon-rain.png');
+}
+.diary-article.show-icon.moon {
+  background-image: url('../../assets/icon-moon.png');
+}
+
 .diary-article::before,
 .diary-article::after {
   content: '';
@@ -33,11 +48,14 @@
   left: 0;
   z-index: -1;
 }
+
 .article-title {
   font-size: 16px;
   color: #29363d;
   float: left;
+  padding-left: 2em;
 }
+
 .article-time {
   color: #677880;
   font-size: 12px;
@@ -49,6 +67,9 @@
   line-height: 1.4;
   clear: both;
   margin-top: 40px;
+}
+
+.article-content::after {
 }
 
 /* 버튼 */

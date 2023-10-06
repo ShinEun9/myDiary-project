@@ -1,31 +1,31 @@
-import { FC } from 'react';
-import styles from './DiaryForm.module.css';
-import Input from '../common/Input';
+import { FC, FormEvent } from 'react';
 import Button from '../common/Button';
+import { useFirestore } from '../../hooks/useFireStore';
+import DiaryFormContent from './DiaryFormContent';
+import useInputs from '../../hooks/useInputs';
 
-const feeling = ['rainbow', 'cloud', 'rain', 'moon'];
-const feelingDesc = ['기분맑음', '기분흐림', '기분우울', '기분고요'];
+export type DirayFormData = {
+  feeling: string;
+  title: string;
+  content: string;
+};
 
-const DiaryForm: FC<{ uid: number }> = ({ uid }) => {
+const DiaryForm: FC<{ uid?: string }> = ({ uid }) => {
+  const { addDocument } = useFirestore('diary');
+  const [inputs, onChange, setInputs] = useInputs<DirayFormData>({ feeling: '', title: '', content: '' });
+
+  const handleFormSubmit = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    addDocument({
+      ...inputs,
+      uid,
+    });
+    setInputs({ feeling: '', title: '', content: '' });
+  };
+
   return (
-    <form>
-      <fieldset className={styles['button-group']}>
-        <legend className="a11y-hidden">오늘의 당신의 기분을 선택해보세요</legend>
-        {feeling.map((item, index) => (
-          <label key={item} className={styles['btn-feeling']}>
-            <input className="a11y-hidden" type="radio" name="feeling" value={item} />
-            <span className={styles.check}>{feelingDesc[index]}</span>
-          </label>
-        ))}
-      </fieldset>
-      <label className="a11y-hidden" htmlFor="diary-title">
-        제목
-      </label>
-      <Input id="diary-title" type="text" placeholder="제목" />
-      <label className="a11y-hidden" htmlFor="diary-content">
-        일기 내용
-      </label>
-      <textarea id="diary-content" className={styles['diary-textarea']} placeholder="오늘의 비밀은 무엇인가요?" />
+    <form onSubmit={handleFormSubmit}>
+      <DiaryFormContent inputs={inputs} onChange={onChange} suffix={'add'} />
       <Button>작성하기</Button>
     </form>
   );
