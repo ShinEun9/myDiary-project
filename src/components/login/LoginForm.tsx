@@ -27,7 +27,7 @@ const LoginForm = () => {
       <label className={'label'} htmlFor="password">
         비밀번호
       </label>
-      <Input type="password" id="password" onChange={onChange} value={inputs.email} />
+      <Input type="password" id="password" onChange={onChange} value={inputs.password} />
 
       {!isPending && <Button>로그인</Button>}
       {isPending && <strong className="pending">로그인이 진행중입니다...</strong>}

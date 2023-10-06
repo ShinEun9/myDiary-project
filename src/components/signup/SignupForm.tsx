@@ -22,7 +22,7 @@ const SignupForm = () => {
 
   return (
     <form className={'form-wrap'} onSubmit={handleFormSubmit}>
-      <label className={'label'} htmlFor="user-email">
+      <label className={'label'} htmlFor="email">
         이메일
       </label>
       <Input
