@@ -8,14 +8,13 @@ import iconEdit from '../../assets/icon-edit.svg';
 import iconDelete from '../../assets/icon-delete.svg';
 import formattingTime from '../../utils/formattingTime';
 import feelingData from '../../utils/feelingData';
-import { Document } from '../../typings/db';
-import feelingKey from '../../typings/feeling';
-import { DirayFormData } from './DiaryForm';
+
+import { DirayFormState, DiaryItem as Diary } from '../../typings';
 
 const stylesBind = classNames.bind(styles);
 
-const DiaryItem: FC<{ item: Document }> = ({ item }) => {
-  const [inputs, onChange, setInputs] = useInputs<DirayFormData>({ feeling: '', title: '', content: '' });
+const DiaryItem: FC<{ item: Diary }> = ({ item }) => {
+  const [inputs, onChange, setInputs] = useInputs<DirayFormState>({ feeling: '', title: '', content: '' });
   const { deleteDocument, editDocument } = useFirestore('diary');
   const [editMode, setEditMode] = useState(false);
 
@@ -35,7 +34,7 @@ const DiaryItem: FC<{ item: Document }> = ({ item }) => {
     <article className={stylesBind('diary-article', !editMode && 'show-icon', item.feeling)}>
       {!editMode && (
         <>
-          <span className="a11y-hidden">{feelingData[item.feeling as feelingKey]}</span>
+          <span className="a11y-hidden">{feelingData[item.feeling]}</span>
           <h3 className={stylesBind('article-title', item.feeling)}>{item.title}</h3>
           <time
             className={styles['article-time']}

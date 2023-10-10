@@ -1,7 +1,11 @@
 import { appFireStore } from '../firebase/config';
 import { useEffect, useState } from 'react';
 import { onSnapshot, collection, query, orderBy, QueryConstraint, Query, DocumentData } from 'firebase/firestore';
-import { Document } from '../typings/db';
+
+interface Document {
+  [key: string]: any;
+  id: string;
+}
 
 export const useCollection = (transaction: string, myQuery?: QueryConstraint[]) => {
   const [documents, setDocuments] = useState<Document[] | null>(null);

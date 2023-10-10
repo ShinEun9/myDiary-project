@@ -7,7 +7,7 @@ interface State {
   isAuthReady: boolean;
 }
 
-type Action = { type: 'LOGIN'; payload: User } | { type: 'LOGOUT' } | { type: 'SET_AUTH_READY'; payload: User };
+type Action = { type: 'LOGIN'; payload: User } | { type: 'LOGOUT' } | { type: 'SET_AUTH_READY'; payload: User | null };
 
 interface ContextState extends State {
   dispatch: Dispatch<Action>;
@@ -40,7 +40,7 @@ const AuthContextProvider: FC<{ children: ReactNode }> = ({ children }) => {
 
   useEffect(() => {
     const unsubscribe = appAuth.onAuthStateChanged(function (user) {
-      dispatch({ type: 'SET_AUTH_READY', payload: user as User });
+      dispatch({ type: 'SET_AUTH_READY', payload: user });
     });
 
     return () => {

@@ -3,5 +3,6 @@ const feelingData = {
   cloud: '기분흐림',
   rain: '기분우울',
   moon: '기분고요',
-};
+} as const;
+
 export default feelingData;

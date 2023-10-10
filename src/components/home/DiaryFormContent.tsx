@@ -4,12 +4,12 @@ import classNames from 'classnames/bind';
 import Input from '../common/Input';
 import TextArea from '../common/TextArea';
 import feelingData from '../../utils/feelingData';
-import { DirayFormData } from './DiaryForm';
+import { DirayFormState } from '../../typings';
 
 const stylesBind = classNames.bind(styles);
 
 interface PropTypes {
-  inputs: DirayFormData;
+  inputs: DirayFormState;
   onChange: (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
   suffix: string;
 }

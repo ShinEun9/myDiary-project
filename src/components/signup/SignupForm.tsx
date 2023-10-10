@@ -1,18 +1,13 @@
-import { ChangeEvent, FormEvent, useRef, useState } from 'react';
+import { FormEvent } from 'react';
 import useInputs from '../../hooks/useInputs';
 import Input from '../common/Input';
 import Button from '../common/Button';
 import { useSignup } from '../../hooks/useSignup';
+import { SignupFormState } from '../../typings';
 import { errorDesc } from '../../utils/signupError';
 
-type SignupData = {
-  email: string;
-  password: string;
-  nickname: string;
-};
-
 const SignupForm = () => {
-  const [inputs, onChange] = useInputs<SignupData>({ email: '', password: '', nickname: '' });
+  const [inputs, onChange] = useInputs<SignupFormState>({ email: '', password: '', nickname: '' });
   const { error, isPending, signup, emailRef, passwordRef } = useSignup();
 
   const handleFormSubmit = (e: FormEvent) => {

@@ -1,9 +1,9 @@
 import { useReducer } from 'react';
 import { appFireStore, timeStamp } from '../firebase/config';
-import { collection, addDoc, deleteDoc, doc, updateDoc } from 'firebase/firestore';
+import { collection, addDoc, deleteDoc, doc, updateDoc, DocumentReference } from 'firebase/firestore';
 
 interface State {
-  document: object | null;
+  document: DocumentReference | null;
   isPending: boolean;
   error: string | null;
   success: boolean;
@@ -11,7 +11,7 @@ interface State {
 
 type Action =
   | { type: 'SET_IS_PENDING' }
-  | { type: 'ADD_DOC'; payload: object }
+  | { type: 'ADD_DOC'; payload: DocumentReference }
   | { type: 'DELETE_DOC' }
   | { type: 'EDIT_DOC' }
   | { type: 'SET_ERROR'; payload: string };
@@ -76,7 +76,7 @@ export const useFirestore = (transaction: string) => {
   const deleteDocument = async (id: string) => {
     dispatch({ type: 'SET_IS_PENDING' });
     try {
-      const docRef = await deleteDoc(doc(colRef, id));
+      await deleteDoc(doc(colRef, id));
       dispatch({ type: 'DELETE_DOC' });
     } catch (e) {
       dispatch({ type: 'SET_ERROR', payload: (e as { message: string }).message });

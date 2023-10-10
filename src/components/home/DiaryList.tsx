@@ -1,8 +1,8 @@
-import React, { FC } from 'react';
+import { FC } from 'react';
 import DiaryItem from './DiaryItem';
-import { Document } from '../../typings/db';
+import { DiaryItem as Diary } from '../../typings';
 
-const DiaryList: FC<{ diaries: Document[] }> = ({ diaries }) => {
+const DiaryList: FC<{ diaries: Diary[] }> = ({ diaries }) => {
   return (
     <>
       {diaries.map((item) => {
