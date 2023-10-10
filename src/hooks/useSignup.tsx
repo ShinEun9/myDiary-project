@@ -2,12 +2,14 @@ import { useRef, useState } from 'react';
 import { appAuth } from '../firebase/config';
 import { createUserWithEmailAndPassword, signOut, updateProfile } from 'firebase/auth';
 import signupError, { errorCode } from '../utils/signupError';
+import { useAuthContext } from './useAuthContext';
 
 export const useSignup = () => {
   const [error, setError] = useState<string | null>(null);
   const [isPending, setIsPending] = useState(false);
   const emailRef = useRef<HTMLInputElement>(null);
   const passwordRef = useRef<HTMLInputElement>(null);
+  const { dispatch } = useAuthContext();
 
   const signup = (email: string, password: string, nickname: string) => {
     setError(null);
@@ -21,6 +23,7 @@ export const useSignup = () => {
           .then(() => {
             setError(null);
             setIsPending(false);
+            dispatch({ type: 'LOGIN', payload: user });
           })
           .catch((err) => {
             setError(err.message);

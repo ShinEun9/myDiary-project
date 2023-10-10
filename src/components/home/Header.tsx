@@ -4,7 +4,6 @@ import { ReactComponent as LogoImg } from '../../assets/logo.svg';
 import { ReactComponent as LogoutImg } from '../../assets/icon-logout.svg';
 import { useAuthContext } from '../../hooks/useAuthContext';
 import { useLogout } from '../../hooks/useLogout';
-import { User } from 'firebase/auth';
 
 const Header = () => {
   const { user } = useAuthContext();
@@ -23,7 +22,7 @@ const Header = () => {
           {user && (
             <>
               <p className={styles['hello-txt']}>
-                환영합니다 <strong>{(user as User).displayName}</strong>님!
+                환영합니다 <strong>{user.displayName}</strong>님!
               </p>
               <button type={'button'} className={styles['btn-logout']} onClick={logout}>
                 <LogoutImg className={styles['svg']} />

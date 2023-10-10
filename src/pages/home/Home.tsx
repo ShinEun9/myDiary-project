@@ -1,4 +1,3 @@
-import React, { useMemo } from 'react';
 import styles from './Home.module.css';
 import DiaryForm from '../../components/home/DiaryForm';
 import DiaryList from '../../components/home/DiaryList';
@@ -6,6 +5,7 @@ import Header from '../../components/home/Header';
 import { useAuthContext } from '../../hooks/useAuthContext';
 import { useCollection } from '../../hooks/useCollection';
 import { where } from 'firebase/firestore';
+import { DiaryItem } from '../../typings';
 
 const Home = () => {
   const { user } = useAuthContext();
@@ -24,7 +24,7 @@ const Home = () => {
           <h2 className="a11y-hidden">일기목록</h2>
           <ul>
             {error && <strong>{error}</strong>}
-            {documents && <DiaryList diaries={documents} />}
+            {documents && <DiaryList diaries={documents as unknown as DiaryItem[]} />}
           </ul>
         </section>
       </main>
