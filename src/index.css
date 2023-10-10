@@ -55,6 +55,13 @@ button {
   position: absolute;
 }
 
+.loading {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 /* 공통 */
 .pending,
 .error {

@@ -3,12 +3,12 @@
   width: 100%;
   box-sizing: border-box;
   border: none;
-  box-shadow: 0 1px 0 0 #677880;
   height: 48px;
-  transition: box-shadow 0.2s;
+  box-shadow: 0 1px 0 0 #677880;
   border-radius: 4px 4px 0 0;
   padding: 0 16px;
   font-size: 16px;
+  transition: box-shadow 0.2s;
 }
 
 .input-style:hover {

@@ -1,4 +1,3 @@
-import React from 'react';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import Home from './pages/home/Home';
 import Login from './pages/login/Login';
@@ -21,7 +20,7 @@ function App() {
           </Routes>
         </BrowserRouter>
       ) : (
-        <div>loading...</div>
+        <div className="loading">loading...</div>
       )}
     </div>
   );
