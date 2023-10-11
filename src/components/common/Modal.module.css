@@ -1,0 +1,76 @@
+.overlay {
+  position: fixed;
+  z-index: 200;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dim {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+.modal-container {
+  position: relative;
+  max-width: 456px;
+  width: 100%;
+  padding: 30px;
+  background-color: white;
+  border: 1px solid #c4c4c4;
+  border-radius: 5px;
+}
+
+.modal-container > h2 {
+  text-align: center;
+  margin: 20px 0 40px;
+  font-size: 16px;
+}
+
+.button-group {
+  display: flex;
+  gap: 10px;
+  padding: 0 35px;
+}
+.button-group button:first-child {
+  background-color: white;
+  border: 1px solid #c4c4c4;
+  color: #767676;
+}
+.button-group button:last-child {
+  background-color: rgba(255, 79, 110, 0.9);
+}
+
+.btn-modal-close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
+
+/* modal animation */
+.modal-enter {
+  opacity: 0;
+}
+
+.modal-enter-active {
+  opacity: 1;
+  transition: opacity 300ms;
+}
+
+.modal-exit {
+  opacity: 1;
+}
+
+.modal-exit-active {
+  opacity: 0;
+  transition: opacity 300ms;
+}
