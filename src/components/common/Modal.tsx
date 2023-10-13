@@ -26,8 +26,7 @@ const Modal: React.FC<Props> = ({ children, isOpen, selector, handleClose, handl
       unmountOnExit
     >
       <Portal selector={selector}>
-        <div className={styles.overlay}>
-          <div className={styles.dim} onClick={handleClose}></div>
+        <div className={styles.overlay} onClick={handleClose}>
           <article className={styles['modal-container']}>
             {children}
             <div className={styles['button-group']}>
@@ -40,7 +39,7 @@ const Modal: React.FC<Props> = ({ children, isOpen, selector, handleClose, handl
             </div>
             <button className={styles['btn-modal-close']} type={'button'} onClick={handleClose}>
               <IconClose />
-              <span className="a11y-hidden"></span>
+              <span className="a11y-hidden">모달 창 닫기 버튼</span>
             </button>
           </article>
         </div>

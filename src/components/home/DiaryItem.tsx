@@ -3,7 +3,6 @@ import { useFirestore } from '../../hooks/useFireStore';
 import styles from './DiaryItem.module.css';
 import classNames from 'classnames/bind';
 import DiaryFormContent from './DiaryFormContent';
-import Button from '../common/Button';
 import Modal from '../common/Modal';
 import useInputs from '../../hooks/useInputs';
 import useModal from '../../hooks/useModal';
