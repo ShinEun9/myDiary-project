@@ -1,4 +1,3 @@
-import { useEffect, useRef, KeyboardEvent } from 'react';
 import { CSSTransition } from 'react-transition-group';
 import Portal from './Portal';
 import Button from './Button';
@@ -44,7 +43,8 @@ const Modal: React.FC<Props> = ({
       unmountOnExit
     >
       <Portal selector={selector}>
-        <div className={styles.overlay} onClick={handleClose}>
+        <div className={styles.overlay}>
+          <div className={styles.dim} onClick={handleClose}></div>
           <article role="dialog" aria-modal="true" aria-labelledby={id} className={styles['modal-container']}>
             {children}
             <div className={styles['button-group']}>
