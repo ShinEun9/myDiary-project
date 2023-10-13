@@ -4,53 +4,32 @@ import Portal from './Portal';
 import Button from './Button';
 import styles from './Modal.module.css';
 import { ReactComponent as IconClose } from '../../assets/icon-close.svg';
+import useModalKeyEvent from '../../hooks/useModalKeyEvent';
 
 interface Props {
+  id: string;
+  selector?: string;
   isOpen: boolean;
   handleClose: () => void;
   handleConfirmClick: () => void;
-  selector?: string;
   children: React.ReactNode;
+  externalBtnRef: React.RefObject<HTMLButtonElement>;
 }
 
-const Modal: React.FC<Props> = ({ children, isOpen, selector, handleClose, handleConfirmClick }) => {
-  const firstEl = useRef<HTMLButtonElement>(null);
-  const lastEl = useRef<HTMLButtonElement>(null);
-
-  const handleFirstElKeyDown = (e: KeyboardEvent<HTMLButtonElement>) => {
-    if (e.shiftKey && e.key === 'Tab') {
-      e.preventDefault();
-      if (lastEl.current) {
-        lastEl.current.focus();
-      }
-    }
-  };
-
-  const handleLastBtnKeyDown = (e: KeyboardEvent<HTMLButtonElement>) => {
-    if (!e.shiftKey && e.key === 'Tab') {
-      e.preventDefault();
-      if (firstEl.current) {
-        firstEl.current.focus();
-      }
-    }
-  };
-
-  const handleEscKeyDown = (e: Event) => {
-    if ((e as unknown as KeyboardEvent).key === 'Escape') {
-      handleClose();
-    }
-  };
-
-  useEffect(() => {
-    if (isOpen) {
-      document.addEventListener('keydown', handleEscKeyDown);
-      if (firstEl.current) firstEl.current.focus();
-    }
-
-    return () => {
-      document.removeEventListener('keydown', handleEscKeyDown);
-    };
-  }, [isOpen]);
+const Modal: React.FC<Props> = ({
+  id,
+  children,
+  isOpen,
+  selector,
+  handleClose,
+  handleConfirmClick,
+  externalBtnRef,
+}) => {
+  const { handleFirstElKeyDown, handleLastBtnKeyDown, firstEl, lastEl } = useModalKeyEvent(
+    isOpen,
+    externalBtnRef,
+    handleClose,
+  );
 
   return (
     <CSSTransition
@@ -66,7 +45,7 @@ const Modal: React.FC<Props> = ({ children, isOpen, selector, handleClose, handl
     >
       <Portal selector={selector}>
         <div className={styles.overlay} onClick={handleClose}>
-          <article className={styles['modal-container']}>
+          <article role="dialog" aria-modal="true" aria-labelledby={id} className={styles['modal-container']}>
             {children}
             <div className={styles['button-group']}>
               <Button ref={firstEl} type="button" onClick={handleClose} onKeyDown={handleFirstElKeyDown}>

@@ -1,3 +1,4 @@
+import { useRef } from 'react';
 import { Link } from 'react-router-dom';
 import styles from './Header.module.css';
 import { ReactComponent as LogoImg } from '../../assets/logo.svg';
@@ -11,6 +12,7 @@ const Header = () => {
   const { user } = useAuthContext();
   const { logout } = useLogout();
   const { isOpen, handleOpen, handleClose } = useModal();
+  const buttonRef = useRef<HTMLButtonElement>(null);
 
   return (
     <header className={styles['header']}>
@@ -18,7 +20,6 @@ const Header = () => {
         <h1>
           <Link to="/">
             <span className="a11y-hidden">오늘 당신의 일기는</span>
-
             <LogoImg className={styles['logo']} />
           </Link>
         </h1>
@@ -28,7 +29,7 @@ const Header = () => {
               <p className={styles['hello-txt']}>
                 환영합니다 <strong>{user.displayName}</strong>님!
               </p>
-              <button type={'button'} className={styles['btn-logout']} onClick={handleOpen}>
+              <button ref={buttonRef} type={'button'} className={styles['btn-logout']} onClick={handleOpen}>
                 <LogoutImg className={styles['svg']} />
                 <span>로그아웃</span>
               </button>
@@ -37,15 +38,17 @@ const Header = () => {
         </div>
       </div>
       <Modal
+        id={'modal-logout'}
+        selector="#modal-root"
         isOpen={isOpen}
         handleClose={handleClose}
         handleConfirmClick={() => {
           logout();
           handleClose();
         }}
-        selector="#modal-root"
+        externalBtnRef={buttonRef}
       >
-        <h2>정말 로그아웃 하시겠습니까?</h2>
+        <h2 id={'modal-logout'}>정말 로그아웃 하시겠습니까?</h2>
       </Modal>
     </header>
   );

@@ -1,4 +1,4 @@
-import { FC, FormEvent, useState } from 'react';
+import { FC, FormEvent, useState, useRef } from 'react';
 import { useFirestore } from '../../hooks/useFireStore';
 import styles from './DiaryItem.module.css';
 import classNames from 'classnames/bind';
@@ -19,6 +19,7 @@ const DiaryItem: FC<{ item: Diary }> = ({ item }) => {
   const { deleteDocument, editDocument } = useFirestore('diary');
   const [editMode, setEditMode] = useState(false);
   const { isOpen, handleOpen, handleClose } = useModal();
+  const buttonRef = useRef<HTMLButtonElement>(null);
 
   const handleEditBtnClick = () => {
     const { feeling, title, content } = item;
@@ -52,7 +53,7 @@ const DiaryItem: FC<{ item: Diary }> = ({ item }) => {
                   <img src={iconEdit} alt="수정" onClick={handleEditBtnClick} />
                 </button>
                 <span></span>
-                <button type="button" onClick={handleOpen}>
+                <button ref={buttonRef} type="button" onClick={handleOpen}>
                   <img src={iconDelete} alt="삭제" />
                 </button>
               </>
@@ -83,15 +84,17 @@ const DiaryItem: FC<{ item: Diary }> = ({ item }) => {
         )}
       </article>
       <Modal
+        id={'modal-diaryDelete'}
+        selector="#modal-root"
         isOpen={isOpen}
         handleClose={handleClose}
         handleConfirmClick={() => {
           deleteDocument(item.id);
           handleClose();
         }}
-        selector="#modal-root"
+        externalBtnRef={buttonRef}
       >
-        <h2 id={'diaryDelete'}>정말 일기를 삭제하시겠습니까?</h2>
+        <h2 id={'modal-diaryDelete'}>정말 일기를 삭제하시겠습니까?</h2>
       </Modal>
     </>
   );
