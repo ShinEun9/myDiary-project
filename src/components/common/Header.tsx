@@ -7,8 +7,8 @@ const Header: FC = () => {
   return (
     <header className={styles['header']}>
       <h1>
-        <span className="a11y-hidden">오늘 당신의 일기는</span>
-        <Link to={'/'}>
+        <Link to="/">
+          <span className="a11y-hidden">오늘 당신의 날씨는? 로고이미지</span>
           <LogoImg className={styles['logo']} />
         </Link>
       </h1>

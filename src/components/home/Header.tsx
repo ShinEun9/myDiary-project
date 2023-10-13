@@ -16,8 +16,9 @@ const Header = () => {
     <header className={styles['header']}>
       <div className={styles['header-wrap']}>
         <h1>
-          <span className="a11y-hidden">오늘 당신의 일기는</span>
           <Link to="/">
+            <span className="a11y-hidden">오늘 당신의 일기는</span>
+
             <LogoImg className={styles['logo']} />
           </Link>
         </h1>
