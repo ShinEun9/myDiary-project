@@ -1,17 +1,18 @@
-import React, { FC } from 'react';
+import { forwardRef } from 'react';
 import styles from './Button.module.css';
 
 interface Props {
-  type?: 'submit' | 'button';
   children: string;
+  type?: 'submit' | 'button';
   onClick?: () => void;
+  onKeyDown?: (e: React.KeyboardEvent<HTMLButtonElement>) => void;
 }
-const Button: FC<Props> = ({ children, type, onClick }) => {
+const Button = forwardRef<HTMLButtonElement, Props>(({ children, type, ...rest }, ref) => {
   return (
-    <button className={styles['btn-black']} type={type && 'submit'} onClick={onClick}>
+    <button ref={ref} className={styles['btn-black']} type={type && 'submit'} {...rest}>
       {children}
     </button>
   );
-};
+});
 
 export default Button;
