@@ -1,45 +1,52 @@
-/* 기분 버튼  */
 .button-group {
   margin-bottom: 16px;
 }
+
+/* 기분 버튼  */
 .btn-feeling {
   display: inline-block;
   margin-right: 16px;
-  width: 60px;
-  height: 60px;
-  cursor: pointer;
 }
 
-.btn-feeling .check {
+/* 기분 버튼 label*/
+.btn-feeling > input + label {
   content: '';
   display: block;
+  width: 60px;
+  height: 70px;
+  cursor: pointer;
   background: url('../../assets/icon-rainbow.png') no-repeat center top/ 50px;
   opacity: 0.6;
   transition: 0.3s;
   text-align: center;
   color: rgba(0, 0, 0, 0.7);
   font-size: 12px;
-  padding-top: 53px;
 }
 
-.btn-feeling .check:hover {
-  opacity: 1.05;
-}
-
-.btn-feeling input[value='cloud'] + .check {
+.btn-feeling > input[value='cloud'] + label {
   background-image: url('../../assets/icon-cloud.png');
 }
 
-.btn-feeling input[value='rain'] + .check {
+.btn-feeling > input[value='rain'] + label {
   background-image: url('../../assets/icon-rain.png');
 }
 
-.btn-feeling input[value='moon'] + .check {
+.btn-feeling > input[value='moon'] + label {
   background-image: url('../../assets/icon-moon.png');
 }
 
-.btn-feeling .check:hover,
-.btn-feeling .checked {
+/* 기분 버튼 label span*/
+.btn-feeling label span {
+  display: block;
+  padding-top: 50px;
+}
+
+/* 기분 버튼 hover, focus styling*/
+.btn-feeling label:hover,
+.btn-feeling > input:focus + label,
+.btn-feeling label.checked {
   opacity: 1;
   font-weight: bold;
+  box-shadow: 0 0 0 2px #2e6ff2;
+  border-radius: 4px;
 }

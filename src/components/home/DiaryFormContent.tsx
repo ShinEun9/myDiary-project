@@ -1,10 +1,10 @@
 import { ChangeEvent, FC } from 'react';
 import styles from './DiaryFormContent.module.css';
-import classNames from 'classnames/bind';
 import Input from '../common/Input';
 import TextArea from '../common/TextArea';
 import feelingData from '../../utils/feelingData';
 import { DirayFormState } from '../../typings';
+import classNames from 'classnames/bind';
 
 const stylesBind = classNames.bind(styles);
 
@@ -19,7 +19,7 @@ const DiaryFormContent: FC<PropTypes> = ({ inputs, onChange, suffix }) => {
       <fieldset className={styles['button-group']}>
         <legend className="a11y-hidden">오늘의 당신의 기분을 선택해보세요</legend>
         {Object.entries(feelingData).map(([key, value]) => (
-          <label key={key} htmlFor={`${suffix}${key}`} className={styles['btn-feeling']}>
+          <div key={value} className={styles['btn-feeling']}>
             <input
               name={'feeling'}
               id={`${suffix}${key}`}
@@ -29,8 +29,10 @@ const DiaryFormContent: FC<PropTypes> = ({ inputs, onChange, suffix }) => {
               onChange={onChange}
               required
             />
-            <span className={stylesBind('check', inputs.feeling === key && 'checked')}>{value}</span>
-          </label>
+            <label htmlFor={`${suffix}${key}`} className={key === inputs.feeling ? styles.checked : ''}>
+              <span>{value}</span>
+            </label>
+          </div>
         ))}
       </fieldset>
 
