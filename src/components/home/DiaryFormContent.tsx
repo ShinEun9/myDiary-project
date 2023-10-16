@@ -23,10 +23,11 @@ const DiaryFormContent: FC<PropTypes> = ({ inputs, onChange, suffix }) => {
             <input
               name={'feeling'}
               id={`${suffix}${key}`}
-              className="a11y-hidden"
               type="radio"
+              className="a11y-hidden"
               value={key}
               onChange={onChange}
+              required
             />
             <span className={stylesBind('check', inputs.feeling === key && 'checked')}>{value}</span>
           </label>
