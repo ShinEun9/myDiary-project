@@ -2,6 +2,7 @@ import { useState, useRef } from 'react';
 import { appAuth } from '../firebase/config';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { useAuthContext } from './useAuthContext';
+import loginError from '../utils/loginError';
 
 export const useLogin = () => {
   const [error, setError] = useState<string | null>(null);
@@ -22,7 +23,7 @@ export const useLogin = () => {
         setIsPending(false);
       })
       .catch((err) => {
-        setError('올바르지 않은 이메일 또는 비밀번호입니다.');
+        setError(loginError(err.code));
         setIsPending(false);
 
         emailRef.current?.focus();
