@@ -28,7 +28,9 @@ const LoginForm = () => {
 
       {!isPending && <Button>로그인</Button>}
       {isPending && <strong className="pending">로그인이 진행중입니다...</strong>}
-      {error && <strong className="error">* {error}</strong>}
+      <div id="error-message" role="alert" aria-live="assertive">
+        {error && <strong className="error">* {error}</strong>}
+      </div>
     </form>
   );
 };

@@ -48,7 +48,9 @@ const SignupForm = () => {
 
       {!isPending && <Button>회원가입</Button>}
       {isPending && <strong className={'pending'}>회원가입이 진행중입니다...</strong>}
-      {error && <strong className={'error'}>* {error}</strong>}
+      <div id="error-message" role="alert" aria-live="assertive">
+        {error && <strong className={'error'}>* {error}</strong>}
+      </div>
     </form>
   );
 };
