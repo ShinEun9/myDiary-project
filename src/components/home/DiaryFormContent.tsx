@@ -1,13 +1,14 @@
-import { ChangeEvent, FC } from 'react';
+import { FC } from 'react';
 import styles from './DiaryFormContent.module.css';
 import Input from '../common/Input';
 import TextArea from '../common/TextArea';
+import { TextInputChangeEvent } from '../../typings/eventTypes';
 import { DirayFormState } from '../../typings';
 import feelingData from '../../utils/feelingData';
 
 interface Props {
   inputs: DirayFormState;
-  onChange: (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
+  onChange: (e: TextInputChangeEvent) => void;
   suffix: string;
 }
 const DiaryFormContent: FC<Props> = ({ inputs, onChange, suffix }) => {

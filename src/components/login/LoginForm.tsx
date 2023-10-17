@@ -1,15 +1,15 @@
-import { FormEvent } from 'react';
 import Button from '../../components/common/Button';
 import Input from '../../components/common/Input';
 import useLogin from '../../hooks/useLogin';
 import useInputs from '../../hooks/useInputs';
+import { FormSubmitEvent } from '../../typings/eventTypes';
 import { LoginFormState } from '../../typings';
 
 const LoginForm = () => {
   const [inputs, onChange] = useInputs<LoginFormState>({ email: '', password: '' });
   const { error, isPending, login, emailRef } = useLogin();
 
-  const handleFormSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const handleFormSubmit = (e: FormSubmitEvent) => {
     e.preventDefault();
     login(inputs.email, inputs.password);
   };

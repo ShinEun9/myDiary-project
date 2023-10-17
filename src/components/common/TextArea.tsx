@@ -1,10 +1,11 @@
-import { FC, ChangeEvent } from 'react';
+import { FC } from 'react';
 import styles from './TextArea.module.css';
+import { TextInputChangeEvent } from '../../typings/eventTypes';
 
 interface Props {
   id: string;
   placeholder?: string;
-  onChange: (e: ChangeEvent<HTMLTextAreaElement>) => void;
+  onChange: (e: TextInputChangeEvent) => void;
   value: string;
 }
 

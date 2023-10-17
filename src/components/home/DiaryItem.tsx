@@ -1,4 +1,4 @@
-import { FC, FormEvent, useState, useRef } from 'react';
+import { FC, useState, useRef } from 'react';
 import styles from './DiaryItem.module.css';
 import classNames from 'classnames/bind';
 import DiaryFormContent from './DiaryFormContent';
@@ -8,6 +8,7 @@ import { ReactComponent as IconDelete } from '../../assets/icon-delete.svg';
 import useFirestore from '../../hooks/useFireStore';
 import useInputs from '../../hooks/useInputs';
 import useModal from '../../hooks/useModal';
+import { FormSubmitEvent } from '../../typings/eventTypes';
 import { DirayFormState, Diary } from '../../typings';
 import formattingTime from '../../utils/formattingTime';
 import feelingData from '../../utils/feelingData';
@@ -28,7 +29,7 @@ const DiaryItem: FC<{ item: Diary }> = ({ item }) => {
     setIsEditing(true);
   };
 
-  const handleFormSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const handleFormSubmit = (e: FormSubmitEvent) => {
     e.preventDefault();
     editDocument(item.id, { ...inputs });
     setIsEditing(false);

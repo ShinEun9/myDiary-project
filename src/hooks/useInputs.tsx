@@ -1,11 +1,10 @@
-import { useState, useCallback, useEffect, ChangeEvent, Dispatch, SetStateAction } from 'react';
+import { useState, useCallback, Dispatch, SetStateAction } from 'react';
+import { TextInputChangeEvent } from '../typings/eventTypes';
 
-type InputEvent = ChangeEvent<HTMLInputElement | HTMLTextAreaElement>;
-
-function useInputs<T>(initialData: T): [T, (e: InputEvent) => void, Dispatch<SetStateAction<T>>] {
+function useInputs<T>(initialData: T): [T, (e: TextInputChangeEvent) => void, Dispatch<SetStateAction<T>>] {
   const [inputs, setInputs] = useState<T>(initialData);
 
-  const onChange = useCallback((e: InputEvent) => {
+  const onChange = useCallback((e: TextInputChangeEvent) => {
     const { id, name, value } = e.target;
 
     if (e.currentTarget.type === 'radio') {

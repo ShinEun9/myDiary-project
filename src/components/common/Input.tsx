@@ -1,13 +1,14 @@
-import { forwardRef, ChangeEvent } from 'react';
+import { forwardRef } from 'react';
 import classNames from 'classnames/bind';
 import styles from './Input.module.css';
+import { InputChangeEvent } from '../../typings/eventTypes';
 
 const stylesBind = classNames.bind(styles);
 
 interface Props {
   id: string;
   type: 'text' | 'email' | 'password';
-  onChange: (e: ChangeEvent<HTMLInputElement>) => void;
+  onChange: (e: InputChangeEvent) => void;
   value: string;
   placeholder?: string;
   error?: boolean;

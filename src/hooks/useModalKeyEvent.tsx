@@ -1,10 +1,11 @@
-import { RefObject, KeyboardEvent, useEffect, useRef } from 'react';
+import { RefObject, useEffect, useRef } from 'react';
+import { ButtonKeyboardEvent } from '../typings/eventTypes';
 
 const useModalKeyEvent = (isOpen: boolean, externalBtnRef: RefObject<HTMLButtonElement>, handleClose: () => void) => {
   const firstEl = useRef<HTMLButtonElement>(null);
   const lastEl = useRef<HTMLButtonElement>(null);
 
-  const handleFirstElKeyDown = (e: KeyboardEvent<HTMLButtonElement>) => {
+  const handleFirstElKeyDown = (e: ButtonKeyboardEvent) => {
     if (e.shiftKey && e.key === 'Tab') {
       e.preventDefault();
       if (lastEl.current) {
@@ -13,7 +14,7 @@ const useModalKeyEvent = (isOpen: boolean, externalBtnRef: RefObject<HTMLButtonE
     }
   };
 
-  const handleLastElKeyDown = (e: KeyboardEvent<HTMLButtonElement>) => {
+  const handleLastElKeyDown = (e: ButtonKeyboardEvent) => {
     if (!e.shiftKey && e.key === 'Tab') {
       e.preventDefault();
       if (firstEl.current) {
@@ -23,8 +24,8 @@ const useModalKeyEvent = (isOpen: boolean, externalBtnRef: RefObject<HTMLButtonE
   };
 
   useEffect(() => {
-    const handleEscKeyDown = (e: Event) => {
-      if ((e as unknown as KeyboardEvent).key === 'Escape') {
+    const handleEscKeyDown = (e: KeyboardEvent): void => {
+      if (e.key === 'Escape') {
         handleClose();
       }
     };

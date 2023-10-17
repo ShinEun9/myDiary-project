@@ -1,15 +1,16 @@
-import { FC, FormEvent } from 'react';
+import { FC } from 'react';
 import Button from '../common/Button';
 import DiaryFormContent from './DiaryFormContent';
 import useFirestore from '../../hooks/useFireStore';
 import useInputs from '../../hooks/useInputs';
 import { DirayFormState } from '../../typings';
+import { FormSubmitEvent } from '../../typings/eventTypes';
 
 const DiaryForm: FC<{ uid?: string }> = ({ uid }) => {
   const { addDocument } = useFirestore('diary');
   const [inputs, onChange, setInputs] = useInputs<DirayFormState>({ feeling: '', title: '', content: '' });
 
-  const handleFormSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const handleFormSubmit = (e: FormSubmitEvent) => {
     e.preventDefault();
     addDocument({
       ...inputs,
