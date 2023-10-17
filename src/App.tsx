@@ -3,7 +3,7 @@ import Home from './pages/home/Home';
 import Login from './pages/login/Login';
 import Signup from './pages/signup/Signup';
 import NotFound from './pages/notfound/NotFound';
-import { useAuthContext } from './hooks/useAuthContext';
+import useAuthContext from './hooks/useAuthContext';
 import useTitle from './hooks/useTitle';
 
 function App() {

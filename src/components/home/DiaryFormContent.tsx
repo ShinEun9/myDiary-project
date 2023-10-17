@@ -2,18 +2,15 @@ import { ChangeEvent, FC } from 'react';
 import styles from './DiaryFormContent.module.css';
 import Input from '../common/Input';
 import TextArea from '../common/TextArea';
-import feelingData from '../../utils/feelingData';
 import { DirayFormState } from '../../typings';
-import classNames from 'classnames/bind';
+import feelingData from '../../utils/feelingData';
 
-const stylesBind = classNames.bind(styles);
-
-interface PropTypes {
+interface Props {
   inputs: DirayFormState;
   onChange: (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
   suffix: string;
 }
-const DiaryFormContent: FC<PropTypes> = ({ inputs, onChange, suffix }) => {
+const DiaryFormContent: FC<Props> = ({ inputs, onChange, suffix }) => {
   return (
     <>
       <fieldset className={styles['button-group']}>

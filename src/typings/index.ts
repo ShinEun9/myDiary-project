@@ -1,6 +1,6 @@
 import { Timestamp } from 'firebase/firestore';
 
-// form input Type
+// form input type
 export interface LoginFormState {
   email: string;
   password: string;
@@ -18,8 +18,7 @@ export interface DirayFormState {
   content: string;
 }
 
-// DiaryItem
-export interface DiaryItem {
+export interface Diary {
   id: string;
   uid: string;
   createdTime: Timestamp;

@@ -1,10 +1,6 @@
-import { useEffect, useRef, KeyboardEvent } from 'react';
+import { RefObject, KeyboardEvent, useEffect, useRef } from 'react';
 
-const useModalKeyEvent = (
-  isOpen: boolean,
-  externalBtnRef: React.RefObject<HTMLButtonElement>,
-  handleClose: () => void,
-) => {
+const useModalKeyEvent = (isOpen: boolean, externalBtnRef: RefObject<HTMLButtonElement>, handleClose: () => void) => {
   const firstEl = useRef<HTMLButtonElement>(null);
   const lastEl = useRef<HTMLButtonElement>(null);
 
@@ -17,7 +13,7 @@ const useModalKeyEvent = (
     }
   };
 
-  const handleLastBtnKeyDown = (e: KeyboardEvent<HTMLButtonElement>) => {
+  const handleLastElKeyDown = (e: KeyboardEvent<HTMLButtonElement>) => {
     if (!e.shiftKey && e.key === 'Tab') {
       e.preventDefault();
       if (firstEl.current) {
@@ -48,7 +44,7 @@ const useModalKeyEvent = (
     };
   }, [isOpen]);
 
-  return { handleFirstElKeyDown, handleLastBtnKeyDown, firstEl, lastEl };
+  return { handleFirstElKeyDown, handleLastElKeyDown, firstEl, lastEl };
 };
 
 export default useModalKeyEvent;

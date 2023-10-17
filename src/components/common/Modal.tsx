@@ -1,7 +1,8 @@
+import { ReactNode, RefObject, FC } from 'react';
 import { CSSTransition } from 'react-transition-group';
+import styles from './Modal.module.css';
 import Portal from './Portal';
 import Button from './Button';
-import styles from './Modal.module.css';
 import { ReactComponent as IconClose } from '../../assets/icon-close.svg';
 import useModalKeyEvent from '../../hooks/useModalKeyEvent';
 
@@ -11,20 +12,12 @@ interface Props {
   isOpen: boolean;
   handleClose: () => void;
   handleConfirmClick: () => void;
-  children: React.ReactNode;
-  externalBtnRef: React.RefObject<HTMLButtonElement>;
+  children: ReactNode;
+  externalBtnRef: RefObject<HTMLButtonElement>;
 }
 
-const Modal: React.FC<Props> = ({
-  id,
-  children,
-  isOpen,
-  selector,
-  handleClose,
-  handleConfirmClick,
-  externalBtnRef,
-}) => {
-  const { handleFirstElKeyDown, handleLastBtnKeyDown, firstEl, lastEl } = useModalKeyEvent(
+const Modal: FC<Props> = ({ id, children, isOpen, selector, handleClose, handleConfirmClick, externalBtnRef }) => {
+  const { handleFirstElKeyDown, handleLastElKeyDown, firstEl, lastEl } = useModalKeyEvent(
     isOpen,
     externalBtnRef,
     handleClose,
@@ -57,7 +50,7 @@ const Modal: React.FC<Props> = ({
             </div>
             <button
               ref={lastEl}
-              onKeyDown={handleLastBtnKeyDown}
+              onKeyDown={handleLastElKeyDown}
               className={styles['btn-modal-close']}
               type={'button'}
               onClick={handleClose}

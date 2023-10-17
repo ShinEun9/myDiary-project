@@ -57,9 +57,8 @@ const storeReducer = (state: State, action: Action): State => {
   }
 };
 
-export const useFirestore = (transaction: string) => {
+const useFirestore = (transaction: string) => {
   const [response, dispatch] = useReducer(storeReducer, initialState);
-
   const colRef = collection(appFireStore, transaction);
 
   const addDocument = async (doc: object) => {
@@ -95,3 +94,5 @@ export const useFirestore = (transaction: string) => {
 
   return { addDocument, deleteDocument, editDocument, response };
 };
+
+export default useFirestore;

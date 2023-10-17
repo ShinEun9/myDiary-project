@@ -2,9 +2,9 @@ import { useRef, useState } from 'react';
 import { appAuth } from '../firebase/config';
 import { createUserWithEmailAndPassword, signOut, updateProfile } from 'firebase/auth';
 import signupError, { errorCode } from '../utils/signupError';
-import { useAuthContext } from './useAuthContext';
+import useAuthContext from './useAuthContext';
 
-export const useSignup = () => {
+const useSignup = () => {
   const [error, setError] = useState<string | null>(null);
   const [isPending, setIsPending] = useState(false);
   const emailRef = useRef<HTMLInputElement>(null);
@@ -28,7 +28,6 @@ export const useSignup = () => {
           .catch((err) => {
             setError(err.message);
             setIsPending(false);
-            console.log(err.message);
           });
       })
       .catch((err) => {
@@ -44,3 +43,5 @@ export const useSignup = () => {
   };
   return { error, isPending, signup, emailRef, passwordRef };
 };
+
+export default useSignup;

@@ -1,8 +1,8 @@
 import { FormEvent } from 'react';
-import useInputs from '../../hooks/useInputs';
 import Input from '../common/Input';
 import Button from '../common/Button';
-import { useSignup } from '../../hooks/useSignup';
+import useSignup from '../../hooks/useSignup';
+import useInputs from '../../hooks/useInputs';
 import { SignupFormState } from '../../typings';
 import { errorDesc } from '../../utils/signupError';
 

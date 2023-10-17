@@ -1,8 +1,7 @@
-import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import styles from './NotFound.module.css';
 import Button from '../../components/common/Button';
-import { ReactComponent as NotFoundImage } from '../../assets/not-found.svg';
+import { ReactComponent as ImageNotFound } from '../../assets/not-found.svg';
 
 const NotFound = () => {
   const navigate = useNavigate();
@@ -10,7 +9,7 @@ const NotFound = () => {
     <div className={styles.container}>
       <main className={styles.main}>
         <h1 className="a11y-hidden">404 페이지</h1>
-        <NotFoundImage className={styles.image} />
+        <ImageNotFound className={styles.image} />
         <section>
           <h2 className={styles.title}>페이지를 찾을 수 없습니다</h2>
           <p className={styles['title-desc']}>

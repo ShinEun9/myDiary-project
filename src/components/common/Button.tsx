@@ -1,11 +1,11 @@
-import { forwardRef } from 'react';
+import { forwardRef, KeyboardEvent } from 'react';
 import styles from './Button.module.css';
 
 interface Props {
   children: string;
   type?: 'submit' | 'button';
   onClick?: () => void;
-  onKeyDown?: (e: React.KeyboardEvent<HTMLButtonElement>) => void;
+  onKeyDown?: (e: KeyboardEvent<HTMLButtonElement>) => void;
 }
 const Button = forwardRef<HTMLButtonElement, Props>(({ children, type, ...rest }, ref) => {
   return (

@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import DiaryItem from './DiaryItem';
-import { DiaryItem as Diary } from '../../typings';
+import { Diary } from '../../typings';
 
 const DiaryList: FC<{ diaries: Diary[] }> = ({ diaries }) => {
   return (

@@ -1,4 +1,4 @@
-import React, { FC, ReactNode } from 'react';
+import { FC, ReactNode } from 'react';
 import Header from '../common/Header';
 import styles from './BasicLayout.module.css';
 

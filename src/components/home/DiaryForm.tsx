@@ -1,7 +1,7 @@
 import { FC, FormEvent } from 'react';
 import Button from '../common/Button';
-import { useFirestore } from '../../hooks/useFireStore';
 import DiaryFormContent from './DiaryFormContent';
+import useFirestore from '../../hooks/useFireStore';
 import useInputs from '../../hooks/useInputs';
 import { DirayFormState } from '../../typings';
 

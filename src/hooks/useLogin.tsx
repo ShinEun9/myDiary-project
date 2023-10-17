@@ -1,10 +1,10 @@
 import { useState, useRef } from 'react';
 import { appAuth } from '../firebase/config';
 import { signInWithEmailAndPassword } from 'firebase/auth';
-import { useAuthContext } from './useAuthContext';
+import useAuthContext from './useAuthContext';
 import loginError from '../utils/loginError';
 
-export const useLogin = () => {
+const useLogin = () => {
   const [error, setError] = useState<string | null>(null);
   const [isPending, setIsPending] = useState(false);
   const emailRef = useRef<HTMLInputElement>(null);
@@ -32,3 +32,5 @@ export const useLogin = () => {
 
   return { error, isPending, login, emailRef };
 };
+
+export default useLogin;

@@ -7,7 +7,7 @@ interface Document {
   id: string;
 }
 
-export const useCollection = (transaction: string, myQuery?: QueryConstraint[]) => {
+const useCollection = (transaction: string, myQuery?: QueryConstraint[]) => {
   const [documents, setDocuments] = useState<Document[] | null>(null);
   const [error, setError] = useState<string | null>(null);
 
@@ -40,3 +40,5 @@ export const useCollection = (transaction: string, myQuery?: QueryConstraint[]) 
 
   return { documents, error };
 };
+
+export default useCollection;

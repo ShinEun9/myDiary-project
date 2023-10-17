@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
-import LoginForm from '../../components/login/LoginForm';
 import BasicLayout from '../../components/layouts/BasicLayout';
+import LoginForm from '../../components/login/LoginForm';
 
 const Login = () => {
   return (
