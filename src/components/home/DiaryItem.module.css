@@ -6,20 +6,6 @@
   position: relative;
 }
 
-.diary-article.show-icon {
-  background: url('../../assets/icon-rainbow.png') no-repeat 30px 50px/ 48px;
-}
-
-.diary-article.show-icon.cloud {
-  background-image: url('../../assets/icon-cloud.png');
-}
-.diary-article.show-icon.rain {
-  background-image: url('../../assets/icon-rain.png');
-}
-.diary-article.show-icon.moon {
-  background-image: url('../../assets/icon-moon.png');
-}
-
 .diary-article::before,
 .diary-article::after {
   content: '';
@@ -38,6 +24,27 @@
   right: 30px;
   background: #f0f8ff url(../../assets/quote-end.svg) no-repeat 0 0 / contain;
 }
+
+.article-feeling {
+  float: left;
+  margin: -15px 5px 0px 0px;
+  width: 48px;
+  height: 48px;
+  background: no-repeat 0 / 48px;
+}
+.article-feeling.rainbow {
+  background-image: url('../../assets/icon-rainbow.png');
+}
+.article-feeling.cloud {
+  background-image: url('../../assets/icon-cloud.png');
+}
+.article-feeling.rain {
+  background-image: url('../../assets/icon-rain.png');
+}
+.article-feeling.moon {
+  background-image: url('../../assets/icon-moon.png');
+}
+
 .article-title::before {
   content: '';
   display: block;
@@ -53,7 +60,6 @@
   font-size: 16px;
   color: #29363d;
   float: left;
-  padding-left: 2em;
 }
 
 .article-time {
@@ -61,15 +67,13 @@
   font-size: 12px;
   float: right;
 }
+
 .article-content {
   color: #5a6a72;
   font-size: 14px;
   line-height: 1.4;
   clear: both;
   margin-top: 40px;
-}
-
-.article-content::after {
 }
 
 /* 버튼 */
