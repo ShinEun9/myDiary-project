@@ -8,9 +8,11 @@
   justify-content: center;
 }
 .dim {
+  cursor: pointer;
   position: absolute;
   inset: 0;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: black;
+  opacity: 0.4;
 }
 
 .modal-container {
@@ -19,7 +21,7 @@
   width: 100%;
   padding: 30px;
   background-color: white;
-  border: 1px solid #c4c4c4;
+  border: 1px solid var(--light-gray);
   border-radius: 5px;
 }
 
@@ -36,8 +38,8 @@
 }
 .button-group button:first-child {
   background-color: white;
-  border: 1px solid #c4c4c4;
-  color: #767676;
+  border: 1px solid var(--light-gray);
+  color: var(--gray);
 }
 .button-group button:last-child {
   background-color: rgba(255, 79, 110, 0.9);

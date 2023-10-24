@@ -11,7 +11,7 @@
   font-family: inherit;
   border: 0;
   border-radius: 4px;
-  box-shadow: 0 0 0 1px #677880;
+  box-shadow: 0 0 0 1px var(--gray);
   transition: box-shadow 0.3s;
 }
 
@@ -21,6 +21,6 @@
 .textarea:hover,
 .textarea:focus {
   outline: none;
-  box-shadow: 0 0 0 2px #2e6ff2;
+  box-shadow: 0 0 0 2px var(--point-blue);
   border-radius: 4px;
 }

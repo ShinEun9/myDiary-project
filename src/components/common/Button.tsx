@@ -10,7 +10,7 @@ interface Props {
 }
 const Button = forwardRef<HTMLButtonElement, Props>(({ children, type, ...rest }, ref) => {
   return (
-    <button ref={ref} className={styles['btn-black']} type={type && 'submit'} {...rest}>
+    <button ref={ref} className={styles['btn-primary']} type={type && 'submit'} {...rest}>
       {children}
     </button>
   );

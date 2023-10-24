@@ -23,7 +23,7 @@
 
 .main .title-desc {
   font-size: 16px;
-  color: #767676;
+  color: var(--gray);
   margin: 20px 0 40px;
 }
 

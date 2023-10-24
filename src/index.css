@@ -6,14 +6,21 @@
   font-style: normal;
   font-display: swap;
 }
-
-* {
-  font-family: Pretendard-Regular;
+:root {
+  --main-bg-color: #f0f8ff;
+  --point-red: #ff4f6e;
+  --point-blue: #2e6ff2;
+  --point-navy: #29363d;
+  --point-yellow: #febf10;
+  --gray: #677880;
+  --light-gray: #d8ddde;
+  --grayish-white: #fafbfb;
 }
 
 body {
+  font-family: Pretendard-Regular;
   margin: 0;
-  background: #f0f8ff;
+  background: var(--main-bg-color);
 }
 
 ul,
@@ -41,8 +48,13 @@ button {
   border: none;
 }
 button {
+  font: inherit;
   cursor: pointer;
   background-color: transparent;
+}
+input,
+textarea {
+  font: inherit;
 }
 
 .a11y-hidden {
@@ -71,11 +83,11 @@ button {
   margin-top: 10px;
 }
 .pending {
-  color: #29363d;
+  color: var(--point-navy);
 }
 
 .error {
-  color: #ff4f6e;
+  color: var(--point-red);
 }
 
 /* 로그인, 회원가입 페이지 */
@@ -87,8 +99,8 @@ button {
   font-weight: bold;
 }
 .title span {
-  border-bottom: 3px solid #febf10;
-  box-shadow: inset 0 -0.6em rgb(254, 191, 16, 0.4);
+  border-bottom: 3px solid var(--point-yellow);
+  box-shadow: inset 0 -0.6em rgba(254, 191, 16, 0.4);
 }
 
 .form-wrap input {
@@ -100,7 +112,7 @@ button {
   width: 100%;
   box-sizing: border-box;
   font-size: 14px;
-  color: #29363d;
+  color: var(--point-navy);
   margin-bottom: 8px;
 }
 
@@ -109,7 +121,12 @@ button {
   margin-top: 20px;
   text-align: center;
   font-size: 14px;
-  color: black;
-  opacity: 0.6;
+  font-weight: bold;
+  color: var(--point-navy);
+  opacity: 0.8;
   transition: 0.3s;
+}
+
+.btn-link:hover {
+  opacity: 1;
 }

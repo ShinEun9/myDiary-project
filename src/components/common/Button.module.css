@@ -1,7 +1,7 @@
-.btn-black {
+.btn-primary {
   display: block;
   width: 100%;
-  background: #29363d;
+  background: var(--point-navy);
   color: white;
   height: 48px;
   border: 0;
@@ -11,12 +11,9 @@
   opacity: 1;
   transition: 0.3s;
 }
-.btn-black:hover {
-  opacity: 0.9;
+.btn-primary:hover {
+  opacity: 0.8;
 }
-.btn-black:not(:disabled) {
+.btn-primary:not(:disabled) {
   cursor: pointer;
-}
-.btn-black:disabled {
-  opacity: 0.2;
 }

@@ -1,5 +1,5 @@
 .diary-article {
-  border-color: #677880;
+  border-color: var(--gray);
   border-style: solid;
   border-width: 4px 1px 1px 1px;
   padding: 64px 48px;
@@ -17,12 +17,12 @@
 .diary-article::before {
   top: -20px;
   left: 30px;
-  background: #f0f8ff url(../../assets/quote-start.svg) no-repeat 0 0 / contain;
+  background: var(--main-bg-color) url(../../assets/quote-start.svg) no-repeat 0 0 / contain;
 }
 .diary-article::after {
   bottom: -20px;
   right: 30px;
-  background: #f0f8ff url(../../assets/quote-end.svg) no-repeat 0 0 / contain;
+  background: var(--main-bg-color) url(../../assets/quote-end.svg) no-repeat 0 0 / contain;
 }
 
 .article-feeling {
@@ -49,7 +49,7 @@
   content: '';
   display: block;
   width: 100%;
-  border-top: 1px solid #677880;
+  border-top: 1px solid var(--gray);
   position: absolute;
   top: 4px;
   left: 0;
@@ -58,12 +58,12 @@
 
 .article-title {
   font-size: 16px;
-  color: #29363d;
+  color: var(--point-navy);
   float: left;
 }
 
 .article-time {
-  color: #677880;
+  color: var(--gray);
   font-size: 12px;
   float: right;
 }
@@ -83,8 +83,8 @@
   bottom: 0;
   left: 50%;
   transform: translate(-50%, 50%);
-  background: #fafbfb;
-  border: 1px solid #677880;
+  background: var(--grayish-white);
+  border: 1px solid var(--gray);
   border-radius: 20px;
   width: 111px;
   height: 40px;
@@ -116,6 +116,6 @@
   display: inline-block;
   width: 1px;
   height: 16px;
-  background: #d8ddde;
+  background: var(--light-gray);
   margin: 0 4px;
 }

@@ -47,6 +47,6 @@
 .btn-feeling label.checked {
   opacity: 1;
   font-weight: bold;
-  box-shadow: 0 0 0 2px #2e6ff2;
+  box-shadow: 0 0 0 2px var(--point-blue);
   border-radius: 4px;
 }

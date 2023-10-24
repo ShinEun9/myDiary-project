@@ -10,7 +10,7 @@
 .form-container {
   flex-basis: 456px;
   flex-shrink: 0;
-  border-right: 1px solid #ff4f6e;
+  border-right: 1px solid var(--point-red);
   padding: 56px 40px 56px 0px;
   min-height: calc(100vh - 120px);
   box-sizing: border-box;
@@ -39,7 +39,7 @@
   }
   .form-container {
     border-right: 0px;
-    border-bottom: 1px solid #ff4f6e;
+    border-bottom: 1px solid var(--point-red);
     padding-right: 0px;
     min-height: auto;
   }
