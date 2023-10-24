@@ -23,10 +23,10 @@ const Header = () => {
             <ImageLogo className={styles['logo']} />
           </Link>
         </h1>
-        <div className={styles['hello-txt-container']}>
+        <div className={styles['header-right']}>
           {user && (
             <>
-              <p className={styles['hello-txt']}>
+              <p className={styles['greeting-txt']}>
                 환영합니다 <strong>{user.displayName}</strong>님!
               </p>
               <button ref={buttonRef} type={'button'} className={styles['btn-logout']} onClick={handleOpen}>

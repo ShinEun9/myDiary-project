@@ -15,48 +15,59 @@
 
 /* header left */
 .logo {
-  width: 156px;
+  min-width: 100px;
+  width: 100%;
   height: 75px;
 }
 
 /* header right */
-.hello-txt-container {
+.header-right {
   display: flex;
   gap: 20px;
 }
 
-.hello-txt strong {
+.header-right .greeting-txt::after {
+  content: '|';
+  color: var(--light-gray);
+  margin-left: 24px;
+}
+.header-right .greeting-txt {
+  word-break: keep-all;
+}
+
+.header-right .greeting-txt strong {
   border-bottom: 3px solid var(--point-yellow);
   box-shadow: inset 0 -0.6em rgba(254, 191, 16, 0.4);
 }
 
-.btn-logout {
+.header-right .btn-logout {
   display: flex;
   align-items: center;
   gap: 3px;
   text-decoration: none;
   font-weight: bold;
+  font-size: 14px;
   color: var(--gray);
   opacity: 0.8;
   transition: 0.3s;
 }
 
-.btn-logout:hover {
+.header-right .btn-logout:hover {
   opacity: 1;
 }
 
 /* layouts */
-@media (min-width: 541px) {
-  .hello-txt::after {
-    content: '|';
-    color: var(--light-gray);
-    margin-left: 24px;
-  }
-}
 
 @media (max-width: 540px) {
-  .hello-txt-container {
+  .header-right {
     flex-direction: column;
     align-items: flex-end;
+  }
+
+  .header-right .greeting-txt::after {
+    display: none;
+  }
+  .header-right .greeting-txt {
+    text-align: right;
   }
 }
