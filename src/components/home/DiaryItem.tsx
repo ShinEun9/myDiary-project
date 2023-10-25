@@ -3,8 +3,6 @@ import styles from './DiaryItem.module.css';
 import classNames from 'classnames/bind';
 import DiaryFormContent from './DiaryFormContent';
 import Modal from '../common/Modal';
-import { ReactComponent as IconEdit } from '../../assets/icon-edit.svg';
-import { ReactComponent as IconDelete } from '../../assets/icon-delete.svg';
 import useFirestore from '../../hooks/useFireStore';
 import useInputs from '../../hooks/useInputs';
 import useModal from '../../hooks/useModal';
@@ -54,14 +52,12 @@ const DiaryItem: FC<{ item: Diary }> = ({ item }) => {
             <p className={styles['article-content']}>{item.content}</p>
             <div className={styles['button-group']}>
               <>
-                <button type="button" onClick={handleEditBtnClick}>
+                <button type="button" className={styles['btn-edit']} onClick={handleEditBtnClick}>
                   <span className="a11y-hidden">일기 수정버튼</span>
-                  <IconEdit />
                 </button>
                 <span></span>
-                <button ref={deleteBtnRef} type="button" onClick={handleOpen}>
+                <button ref={deleteBtnRef} type="button" className={styles['btn-delete']} onClick={handleOpen}>
                   <span className="a11y-hidden">일기 삭제버튼</span>
-                  <IconDelete />
                 </button>
               </>
             </div>

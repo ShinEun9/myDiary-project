@@ -1,5 +1,5 @@
 .button-group {
-  margin-bottom: 16px;
+  margin-bottom: 30px;
 }
 
 /* 기분 버튼  */
@@ -12,10 +12,10 @@
 .btn-feeling > input + label {
   content: '';
   display: block;
-  width: 60px;
-  height: 70px;
+  width: 48px;
+  height: 68px;
   cursor: pointer;
-  background: url('../../assets/icon-rainbow.png') no-repeat center top/ 50px;
+  background: url('../../assets/icon-sprites.png') -78px -70px / var(--sprites-image);
   opacity: 0.6;
   transition: 0.3s;
   text-align: center;
@@ -24,21 +24,21 @@
 }
 
 .btn-feeling > input[value='cloud'] + label {
-  background-image: url('../../assets/icon-cloud.png');
+  background-position: -78px -138px;
 }
 
 .btn-feeling > input[value='rain'] + label {
-  background-image: url('../../assets/icon-rain.png');
+  background-position: -10px -138px;
 }
 
 .btn-feeling > input[value='moon'] + label {
-  background-image: url('../../assets/icon-moon.png');
+  background-position: -10px -70px;
 }
 
 /* 기분 버튼 label span*/
 .btn-feeling label span {
   display: block;
-  padding-top: 50px;
+  padding-top: 55px;
 }
 
 /* 기분 버튼 hover, focus styling*/

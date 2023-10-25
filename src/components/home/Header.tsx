@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import styles from './Header.module.css';
 import Modal from '../common/Modal';
 import { ReactComponent as ImageLogo } from '../../assets/logo.svg';
-import { ReactComponent as IconLogout } from '../../assets/icon-logout.svg';
 import useAuthContext from '../../hooks/useAuthContext';
 import useLogout from '../../hooks/useLogout';
 import useModal from '../../hooks/useModal';
@@ -30,7 +29,6 @@ const Header = () => {
                 환영합니다 <strong>{user.displayName}</strong>님!
               </p>
               <button ref={buttonRef} type={'button'} className={styles['btn-logout']} onClick={handleOpen}>
-                <IconLogout className={styles['svg']} />
                 <span>로그아웃</span>
               </button>
             </>

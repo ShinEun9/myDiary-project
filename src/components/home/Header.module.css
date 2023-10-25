@@ -27,6 +27,7 @@
 /* header right */
 .header-right {
   display: flex;
+  align-items: center;
   gap: 20px;
   font-size: clamp(10px, 5vw, 16px);
 }
@@ -57,8 +58,12 @@
   opacity: 0.8;
   transition: 0.3s;
 }
-.btn-logout svg {
-  width: clamp(10px, 5vw, 16px);
+.btn-logout::before {
+  content: '';
+  display: block;
+  width: 32px;
+  height: 32px;
+  background: url('../../assets/icon-sprites.png') -146px -70px / var(--sprites-image);
 }
 .header-right .btn-logout:hover {
   opacity: 1;

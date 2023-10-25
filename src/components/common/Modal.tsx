@@ -3,7 +3,6 @@ import { CSSTransition } from 'react-transition-group';
 import styles from './Modal.module.css';
 import Portal from './Portal';
 import Button from './Button';
-import { ReactComponent as IconClose } from '../../assets/icon-close.svg';
 import useModalKeyEvent from '../../hooks/useModalKeyEvent';
 
 interface Props {
@@ -55,7 +54,6 @@ const Modal: FC<Props> = ({ id, children, isOpen, selector, handleClose, handleC
               type={'button'}
               onClick={handleClose}
             >
-              <IconClose />
               <span className="a11y-hidden">모달 창 닫기 버튼</span>
             </button>
           </article>

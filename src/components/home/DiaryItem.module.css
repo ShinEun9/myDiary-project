@@ -17,12 +17,12 @@
 .diary-article::before {
   top: -20px;
   left: 30px;
-  background: var(--main-bg-color) url(../../assets/quote-start.svg) no-repeat 0 0 / contain;
+  background: var(--main-bg-color) url('../../assets/icon-sprites.png') -110px -10px / var(--sprites-image);
 }
 .diary-article::after {
   bottom: -20px;
   right: 30px;
-  background: var(--main-bg-color) url(../../assets/quote-end.svg) no-repeat 0 0 / contain;
+  background: var(--main-bg-color) url('../../assets/icon-sprites.png') -10px -10px / var(--sprites-image);
 }
 
 .article-feeling {
@@ -30,19 +30,17 @@
   margin: -15px 5px 0px 0px;
   width: 48px;
   height: 48px;
-  background: no-repeat 0 / 48px;
+  background: url('../../assets/icon-sprites.png') -78px -70px / var(--sprites-image);
 }
-.article-feeling.rainbow {
-  background-image: url('../../assets/icon-rainbow.png');
-}
+
 .article-feeling.cloud {
-  background-image: url('../../assets/icon-cloud.png');
+  background-position: -78px -138px;
 }
 .article-feeling.rain {
-  background-image: url('../../assets/icon-rain.png');
+  background-position: -10px -138px;
 }
 .article-feeling.moon {
-  background-image: url('../../assets/icon-moon.png');
+  background-position: -10px -70px;
 }
 
 .article-title::before {
@@ -58,6 +56,7 @@
 
 .article-title {
   font-size: 16px;
+  font-weight: bold;
   color: var(--point-navy);
   float: left;
 }
@@ -96,22 +95,22 @@
 
 .button-group button {
   cursor: pointer;
-  border: none;
   width: 32px;
   height: 32px;
-  background: none;
-  padding: 0;
-  opacity: 0.6;
+  opacity: 0.8;
   transition: opacity 0.3s;
 }
 
+.button-group .btn-edit {
+  background: url('../../assets/icon-sprites.png') -210px -10px / var(--sprites-image);
+}
+.button-group .btn-delete {
+  background: url('../../assets/icon-sprites.png') -146px -138px / var(--sprites-image);
+}
 .button-group button:hover {
-  opacity: 1;
+  opacity: 2;
 }
 
-.button-group button img {
-  width: 100%;
-}
 .button-group span {
   display: inline-block;
   width: 1px;

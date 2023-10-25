@@ -46,6 +46,9 @@
 }
 
 .btn-modal-close {
+  width: 22px;
+  height: 22px;
+  background: url('../../assets/icon-sprites.png')-210px -106px / var(--sprites-image);
   position: absolute;
   top: 20px;
   right: 20px;
