@@ -19,12 +19,13 @@ const DiaryFormContent: FC<Props> = ({ inputs, onChange, suffix }) => {
         {Object.entries(feelingData).map(([key, value]) => (
           <div key={value} className={styles['btn-feeling']}>
             <input
-              name={'feeling'}
+              name={`feeling`}
               id={`${suffix}${key}`}
               type="radio"
               className="a11y-hidden"
               value={key}
               onChange={onChange}
+              checked={inputs.feeling === key}
               required
             />
             <label htmlFor={`${suffix}${key}`} className={key === inputs.feeling ? styles.checked : ''}>
