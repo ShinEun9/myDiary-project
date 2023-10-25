@@ -17,10 +17,10 @@ const Header = () => {
   return (
     <header className={styles['header']}>
       <div className={styles['header-wrap']}>
-        <h1>
+        <h1 className={styles['header-left']}>
           <Link to="/">
             <span className="a11y-hidden">오늘 당신의 일기는</span>
-            <ImageLogo className={styles['logo']} />
+            <ImageLogo />
           </Link>
         </h1>
         <div className={styles['header-right']}>

@@ -64,7 +64,7 @@
 
 .article-time {
   color: var(--gray);
-  font-size: 12px;
+  font-size: clamp(10px, 2.5vw, 12px);
   float: right;
 }
 

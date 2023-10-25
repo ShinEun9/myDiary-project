@@ -11,28 +11,34 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 10px;
 }
 
 /* header left */
-.logo {
-  min-width: 100px;
+.header-left {
+  width: 156px;
+  min-width: 80px;
+}
+.header-left svg {
   width: 100%;
-  height: 75px;
+  aspect-ratio: 249 / 120;
 }
 
 /* header right */
 .header-right {
   display: flex;
   gap: 20px;
+  font-size: clamp(10px, 5vw, 16px);
+}
+
+.header-right .greeting-txt {
+  word-break: keep-all;
 }
 
 .header-right .greeting-txt::after {
   content: '|';
   color: var(--light-gray);
   margin-left: 24px;
-}
-.header-right .greeting-txt {
-  word-break: keep-all;
 }
 
 .header-right .greeting-txt strong {
@@ -46,18 +52,19 @@
   gap: 3px;
   text-decoration: none;
   font-weight: bold;
-  font-size: 14px;
+  font-size: inherit;
   color: var(--gray);
   opacity: 0.8;
   transition: 0.3s;
 }
-
+.btn-logout svg {
+  width: clamp(10px, 5vw, 16px);
+}
 .header-right .btn-logout:hover {
   opacity: 1;
 }
 
 /* layouts */
-
 @media (max-width: 540px) {
   .header-right {
     flex-direction: column;
