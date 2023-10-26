@@ -7,7 +7,7 @@ import { DirayFormState } from '../../typings';
 import { FormSubmitEvent } from '../../typings/eventTypes';
 
 const DiaryForm: FC<{ uid?: string }> = ({ uid }) => {
-  const { addDocument } = useFirestore('diary');
+  const { addDocument, state } = useFirestore('diary');
   const [inputs, onChange, setInputs] = useInputs<DirayFormState>({ feeling: '', title: '', content: '' });
 
   const handleFormSubmit = (e: FormSubmitEvent) => {
@@ -16,7 +16,9 @@ const DiaryForm: FC<{ uid?: string }> = ({ uid }) => {
       ...inputs,
       uid,
     });
-    setInputs({ feeling: '', title: '', content: '' });
+    if (state.isSuccess) {
+      setInputs({ feeling: '', title: '', content: '' });
+    }
   };
 
   return (

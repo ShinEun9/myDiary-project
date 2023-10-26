@@ -6,7 +6,7 @@ interface State {
   document: DocumentReference | null;
   isPending: boolean;
   error: string | null;
-  success: boolean;
+  isSuccess: boolean;
 }
 
 type Action =
@@ -20,28 +20,34 @@ const initialState: State = {
   document: null,
   isPending: false,
   error: null,
-  success: false,
+  isSuccess: false,
 };
 
 const storeReducer = (state: State, action: Action): State => {
   switch (action.type) {
     case 'SET_IS_PENDING':
-      return { ...state, isPending: true, document: null, success: false, error: null };
+      return { ...state, isPending: true, document: null, isSuccess: false, error: null };
     case 'ADD_DOC':
       return {
         ...state,
         isPending: false,
         document: action.payload,
-        success: true,
+        isSuccess: true,
         error: null,
       };
     case 'DELETE_DOC':
-      return { ...state, isPending: false, document: null, success: true, error: null };
+      return {
+        ...state,
+        isPending: false,
+        document: null,
+        isSuccess: true,
+        error: null,
+      };
     case 'EDIT_DOC':
       return {
         ...state,
         isPending: false,
-        success: true,
+        isSuccess: true,
         error: null,
       };
     case 'SET_ERROR':
@@ -49,7 +55,7 @@ const storeReducer = (state: State, action: Action): State => {
         ...state,
         isPending: false,
         document: null,
-        success: false,
+        isSuccess: false,
         error: action.payload,
       };
     default:
@@ -58,7 +64,7 @@ const storeReducer = (state: State, action: Action): State => {
 };
 
 const useFirestore = (transaction: string) => {
-  const [response, dispatch] = useReducer(storeReducer, initialState);
+  const [state, dispatch] = useReducer(storeReducer, initialState);
   const colRef = collection(appFireStore, transaction);
 
   const addDocument = async (doc: object) => {
@@ -69,6 +75,7 @@ const useFirestore = (transaction: string) => {
       dispatch({ type: 'ADD_DOC', payload: docRef });
     } catch (e) {
       dispatch({ type: 'SET_ERROR', payload: (e as { message: string }).message });
+      alert((e as { message: string }).message);
     }
   };
 
@@ -79,6 +86,7 @@ const useFirestore = (transaction: string) => {
       dispatch({ type: 'DELETE_DOC' });
     } catch (e) {
       dispatch({ type: 'SET_ERROR', payload: (e as { message: string }).message });
+      alert((e as { message: string }).message);
     }
   };
 
@@ -89,10 +97,11 @@ const useFirestore = (transaction: string) => {
       dispatch({ type: 'EDIT_DOC' });
     } catch (e) {
       dispatch({ type: 'SET_ERROR', payload: (e as { message: string }).message });
+      alert((e as { message: string }).message);
     }
   };
 
-  return { addDocument, deleteDocument, editDocument, response };
+  return { addDocument, deleteDocument, editDocument, state };
 };
 
 export default useFirestore;

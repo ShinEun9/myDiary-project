@@ -17,7 +17,7 @@ const DiaryItem: FC<{ item: Diary }> = ({ item }) => {
   const [inputs, onChange, setInputs] = useInputs<DirayFormState>({ feeling: '', title: '', content: '' });
   const [isEditing, setIsEditing] = useState(false);
 
-  const { deleteDocument, editDocument } = useFirestore('diary');
+  const { deleteDocument, editDocument, state } = useFirestore('diary');
   const { isOpen, handleOpen, handleClose } = useModal();
   const deleteBtnRef = useRef<HTMLButtonElement>(null);
 
@@ -27,10 +27,19 @@ const DiaryItem: FC<{ item: Diary }> = ({ item }) => {
     setIsEditing(true);
   };
 
+  const handleDeleteBtnClick = () => {
+    deleteDocument(item.id);
+    if (state.isSuccess) {
+      handleClose();
+    }
+  };
+
   const handleFormSubmit = (e: FormSubmitEvent) => {
     e.preventDefault();
     editDocument(item.id, { ...inputs });
-    setIsEditing(false);
+    if (state.isSuccess) {
+      setIsEditing(false);
+    }
   };
 
   return (
@@ -91,10 +100,7 @@ const DiaryItem: FC<{ item: Diary }> = ({ item }) => {
         selector="#modal-root"
         isOpen={isOpen}
         handleClose={handleClose}
-        handleConfirmClick={() => {
-          deleteDocument(item.id);
-          handleClose();
-        }}
+        handleConfirmClick={handleDeleteBtnClick}
         externalBtnRef={deleteBtnRef}
       >
         <h2 id={'modal-diaryDelete'}>정말 일기를 삭제하시겠습니까?</h2>
