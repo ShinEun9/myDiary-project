@@ -14,7 +14,7 @@ const Header = () => {
   const buttonRef = useRef<HTMLButtonElement>(null);
 
   return (
-    <header className={styles['header']}>
+    <header className={styles.header}>
       <div className={styles['header-wrap']}>
         <h1 className={styles['header-left']}>
           <Link to="/">

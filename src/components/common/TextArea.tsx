@@ -10,7 +10,7 @@ interface Props {
 }
 
 const TextArea: FC<Props> = (props) => {
-  return <textarea className={styles['textarea']} {...props} />;
+  return <textarea className={styles.textarea} {...props} />;
 };
 
 export default TextArea;

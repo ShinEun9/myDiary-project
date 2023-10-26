@@ -5,11 +5,11 @@ import { ReactComponent as ImageLogo } from '../../assets/logo.svg';
 
 const Header: FC = () => {
   return (
-    <header className={styles['header']}>
+    <header className={styles.header}>
       <h1>
         <Link to="/">
           <span className="a11y-hidden">오늘 당신의 날씨는? 로고이미지</span>
-          <ImageLogo className={styles['logo']} />
+          <ImageLogo className={styles.logo} />
         </Link>
       </h1>
     </header>

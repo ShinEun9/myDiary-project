@@ -1,7 +1,7 @@
 import { useState, useCallback, Dispatch, SetStateAction } from 'react';
 import { TextInputChangeEvent } from '../typings/eventTypes';
 
-function useInputs<T>(initialData: T): [T, (e: TextInputChangeEvent) => void, Dispatch<SetStateAction<T>>] {
+const useInputs = <T,>(initialData: T): [T, (e: TextInputChangeEvent) => void, Dispatch<SetStateAction<T>>] => {
   const [inputs, setInputs] = useState<T>(initialData);
 
   const onChange = useCallback((e: TextInputChangeEvent) => {
@@ -15,6 +15,6 @@ function useInputs<T>(initialData: T): [T, (e: TextInputChangeEvent) => void, Di
   }, []);
 
   return [inputs, onChange, setInputs];
-}
+};
 
 export default useInputs;

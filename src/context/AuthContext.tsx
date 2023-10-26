@@ -22,20 +22,20 @@ const AuthContext = createContext<ContextState>({
   dispatch: () => {},
 });
 
-const AuthContextProvider: FC<{ children: ReactNode }> = ({ children }) => {
-  const authReducer = (state: State, action: Action): State => {
-    switch (action.type) {
-      case 'LOGIN':
-        return { ...state, user: action.payload };
-      case 'LOGOUT':
-        return { ...state, user: null };
-      case 'SET_AUTH_READY':
-        return { ...state, user: action.payload, isAuthReady: true };
-      default:
-        return state;
-    }
-  };
+const authReducer = (state: State, action: Action): State => {
+  switch (action.type) {
+    case 'LOGIN':
+      return { ...state, user: action.payload };
+    case 'LOGOUT':
+      return { ...state, user: null };
+    case 'SET_AUTH_READY':
+      return { ...state, user: action.payload, isAuthReady: true };
+    default:
+      return state;
+  }
+};
 
+const AuthContextProvider: FC<{ children: ReactNode }> = ({ children }) => {
   const [state, dispatch] = useReducer<Reducer<State, Action>>(authReducer, initialState);
 
   useEffect(() => {

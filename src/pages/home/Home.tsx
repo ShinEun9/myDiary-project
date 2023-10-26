@@ -20,7 +20,7 @@ const Home = () => {
   return (
     <>
       <Header />
-      <main className={styles['container']}>
+      <main className={styles.container}>
         <section className={styles['form-container']}>
           <h2>{date} 오늘 당신의 날씨는?</h2>
           <DiaryForm uid={user?.uid} />
